@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       source_branch:
-        description: "source branch name (meaningfy-ws/ted-model2owl-docs repository)"
+        description: "source branch name (OP-TED/ted-model2owl-docs repository)"
         required: true
         default: "develop"
 
 env:
   SITE_DIR: 'site'
-  SOURCE_REPO: 'meaningfy-ws/ted-model2owl-docs'
+  SOURCE_REPO: 'OP-TED/ted-model2owl-docs'
   TARGET_BRANCH: 'gh-pages'
 
 jobs:
