@@ -614,6 +614,13 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock">The enumeration $value should not connect to other elements. An Enumeration stands for a controlled list and can only be referred to.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check if there are outgoing connectors from an enumeration and error about that</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>enumeration-constraint-level-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">enumeration constraint level incorrect or not set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The enumeration $value$ does not have a correct constraint level (either <code>permissive</code> or <code>restrictive</code>) set as a tag with the $cvConstraintLevelProperty$ key. The permissive level will be used as a fallback value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if there is a tag with a key $cvConstraintLevelProperty$ and if its value is either <code>permissive</code> or <code>restrictive</code>. If not, use the <code>permissive</code> as a fallback value and warn about that.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
