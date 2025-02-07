@@ -113,6 +113,18 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user-guide/about.html">User guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user-guide/how-to-use.html">How to use</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user-guide/configuration-file.html">Configuration parameters</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../references.html">References</a>
   </li>
 </ul>
@@ -424,8 +436,7 @@ shape:ClassName-PropertyName
 <p>As UML Comments add no semantics, they are not used in any method of semantic validation. In OWL the AnnotationAssertion axiom [<a href="../references.html#ref:owl2" class="xref page">owl2</a>] does not add any semantics either, and it only improves readability.</p>
 </div>
 <div class="paragraph">
-<p><strong>Note</strong>:
-In practice, comments on UML attributes and generalizations are unsupported, as explained in the <a href="../uml/conv-general.html#rule:comments-uml-elems" class="xref page">rule:comments-uml-elems</a> UML convention.</p>
+<p>By default, we recommend the use of the SKOS lexicalization (<code>skos:editorialNote</code>) in the core ontology layer. In the future this could be controlled by a flag in the configuration of the transformation tool. With such a flag one could enable RDFS lexicalization (<code>rdfs:comment</code>) instead of, or in addition to, the SKOS lexicalization.</p>
 </div>
 <div id="rule:element-external-comment-core" class="exampleblock">
 <div class="title">Rule T.05. Comment&#8201;&#8212;&#8201;in core ontology layer</div>
@@ -524,10 +535,7 @@ shape:ClassName-PropertyName
 <div class="sect2">
 <h3 id="_tags"><a class="anchor" href="#_tags"></a>Tags</h3>
 <div class="paragraph">
-<p>Any UML element can have additional information provided by means of tags, represented by UML Tag elements. Tags serve two purposes (as described in <a href="../uml/conv-general.html#rule:tags-use-cases" class="xref page">rule:tags-use-cases</a>): to either provide additional description of an element or control the transformation process. Every <em>descriptive</em> tag should be transformed into annotation on the RDF resource representing the UML element (e.g. Class, Attribute, Connector).</p>
-</div>
-<div class="paragraph">
-<p>For example, the language tags that are provided on the tag, can be used to generate multilingual ontologies/specifications. The elements highlighted in <a href="#fig:transf-tag-marked">Figure 2</a> below would be transformed in the following Turtle statement <code>epo:Procedure skos:definition "this is the definition in French"@fr .</code></p>
+<p>Any UML element can have additional information provided by means of tags, represented by UML Tag elements. Such tags should be transformed into annotation on the RDF resource representing the UML element (e.g. Class, Attribute, Connector). The language tags that are provided on the tag, can be used to generate multilingual ontologies/specifications. For example, the highlighted elements in <a href="#fig:transf-tag-marked">Figure 2</a> would be transformed in the following Turtle statement <code>epo:Procedure skos:definition "this is the definition in French"@fr .</code></p>
 </div>
 <div id="fig:transf-tag-marked" class="imageblock">
 <div class="content">
@@ -551,15 +559,9 @@ The generation of annotations from tags could be controlled by a flag in the con
 <div class="title">Rule T.07. Tag&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify an annotation axiom on the OWL entity for a UML Tag associated to a UML element. Apply this transformation rule only for descriptive tags (as defined in as defined in <a href="../uml/conv-general.html#rule:descriptive-tags" class="xref page">rule:descriptive-tags</a>). Detect the kind of tag by analyzing its key, and generate the proper RDF representation of the tag value as specified in <a href="../uml/conv-general.html#rule:gen-tags" class="xref page">rule:gen-tags</a>.</p>
+<p>Specify an annotation axiom on the OWL entity for each UML Tag associated to a UML element. If a tag has an associated language tag, it should be attached to the value.</p>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>The below snippets present generated RDF statements for the four supported forms of tags and their values: a plain literal, a literal with a language tag, a typed value and an URI. The snippets use suitable examples to demonstrate the idea.</p>
-</div>
-<div class="paragraph">
-<p>The <code>tagProperty</code> indicates a part of a tag name with a compact URI (for example <code>skos:related</code> for a tag with the <code>skos:related&lt;&gt;</code> key).</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -569,73 +571,18 @@ The generation of annotations from tags could be controlled by a flag in the con
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 19. Tag for a plain literal in RDF/XML syntax</div>
+<div class="title">Listing 19. Tags in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
-  tagName "tag value" .</code></pre>
+  tagName "tag value"@langTag ;
+.</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 20. Tag for a plain literal in RDF/XML syntax</div>
+<div class="title">Listing 20. Tags in RDF/XML syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about =
-"http://base.onto.uri/ClassName"&gt;
-    &lt;tagName&gt;tag value&lt;/tagName&gt;
-&lt;/rdf:Description&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 21. Tag for a literal with a language tag in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
-  tagProperty "tag value"@langTag .</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 22. Tag for a literal with a language tag in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about =
-"http://base.onto.uri/ClassName"&gt;
-    &lt;tagProperty xml:lang = "langTag" &gt;tag value&lt;/tagProperty&gt;
-&lt;/rdf:Description&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 23. Tag for a typed value in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
-  tagProperty "false"^^xsd:boolean .</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 24. Tag for a typed value in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about =
-"http://base.onto.uri/ClassName"&gt;
-  &lt;tagProperty rdf:datatype = "http://www.w3.org/2001/XMLSchema#boolean" &gt;false&lt;/tagProperty&gt;
-&lt;/rdf:Description&gt;</code></pre>
-</div>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 25. Tag for a URI value in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
-  tagProperty &lt;https://www.example.org&gt; .</code></pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 26. Tag for a URI value in RDF/XML syntax</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about =
-"http://base.onto.uri/ClassName"&gt;
-  &lt;tagProperty rdf:resource =
-  "https://www.example.org"/&gt;
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
+    &lt;tagName xml:lang="langTag"&gt;tag value&lt;/tagName&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
 </div></div></td>
@@ -664,7 +611,7 @@ The generation of annotations from tags could be controlled by a flag in the con
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 27. Source in Turtle syntax</div>
+<div class="title">Listing 21. Source in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
 
@@ -673,7 +620,7 @@ The generation of annotations from tags could be controlled by a flag in the con
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 28. Source in RDF/XML syntax</div>
+<div class="title">Listing 22. Source in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ResourceName"&gt;
     &lt;rdfs:isDefinedBy rdf:resource="http://base.onto.uri#core" /&gt;
@@ -699,7 +646,7 @@ The generation of annotations from tags could be controlled by a flag in the con
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 29. Source declaration for NodeShape in Turtle syntax</div>
+<div class="title">Listing 23. Source declaration for NodeShape in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
@@ -709,7 +656,7 @@ shape:ClassName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 30. Source declaration for NodeShape in RDF/XML syntax</div>
+<div class="title">Listing 24. Source declaration for NodeShape in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName"&gt;
     &lt;rdfs:isDefinedBy rdf:resource="http://base.shape.uri/#core-shapes" /&gt;
@@ -719,7 +666,7 @@ shape:ClassName
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 31. Source declaration for PropertyShape in Turtle syntax</div>
+<div class="title">Listing 25. Source declaration for PropertyShape in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">@prefix shape: &lt;http://base.shape.uri/&gt; .
 @prefix sh: &lt;http://www.w3.org/ns/shacl#&gt; .
@@ -729,7 +676,7 @@ shape:ClassName-PropertyName
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 32. Source declaration for PropertyShape in RDF/XML syntax</div>
+<div class="title">Listing 26. Source declaration for PropertyShape in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.shape.uri/ClassName-PropertyName"&gt;
     &lt;rdfs:isDefinedBy rdf:resource="http://base.shape.uri/#core-shapes" /&gt;

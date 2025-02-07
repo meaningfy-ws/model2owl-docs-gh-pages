@@ -113,6 +113,18 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user-guide/about.html">User guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user-guide/how-to-use.html">How to use</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user-guide/configuration-file.html">Configuration parameters</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../references.html">References</a>
   </li>
 </ul>
@@ -349,8 +361,8 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-tag-13</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">invalid tag name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $elementName$ must be one of the following formats: 1) namespace:localName 2) namespace:localName@en 3) namespace:localName^^xsd:integer 4) namespace:localName&lt;&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element (classes, enumerations, datatypes, connectors, attributes, connector roles) select the tag name and ensure that its format adheres to one of the four supported formats: plain literal, literal with a language tag, typed value, or URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $elementName$ must be an URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element (classes, enumerations, datatypes, connectors, attributes, connector roles) select the tag name and check that it is a short URI or short URI with a language tag (e.g. @en).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>common-tag-14</code></p></td>
@@ -887,8 +899,8 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-tag-12</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">invalid tag name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of connector (role) $connector$ must be one of the following formats: 1) namespace:localName 2) namespace:localName@en 3) namespace:localName^^xsd:integer 4) namespace:localName&lt;&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of a connector role (association) or connector (dependency) select the tag name and ensure that its format adheres to one of the four supported formats: plain literal, literal with a language tag, typed value, or URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The tag $tagName$ of element $connector$ must be an URI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">For all tags of an element (classes, enumerations, datatypes, connectors, attributes, connector roles) select the tag name and check that it is a short URI or short URI with a language tag (e.g. @en).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-tag-prefix-13</code></p></td>
@@ -929,8 +941,8 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-tag-18</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">connector with tags</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has tag annotations. The connector is not transformed into a property and therefore any tag will be ignored. The tag(s) should be set for its target/source role(s) instead</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">check if the connector is not of dependency type and has tags, raise a warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connector $connectorName$ has tag annotations. The connector is not transformed into a property and therefore any tag will be ignored.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check if connector has tags, raise a warning</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>connector-name-19</code></p></td>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: model2owl documentation</title>
+    <title>Introduction :: model2owl documentation</title>
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../_/css/site.css">
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">  </head>
@@ -44,50 +44,50 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="definitions.html">Definitions</a>
+    <a class="nav-link" href="../uml/definitions.html">Definitions</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="conceptual-model-conventions.html">UML Model Conventions</a>
+    <a class="nav-link" href="../uml/conceptual-model-conventions.html">UML Model Conventions</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-general.html">General Conventions</a>
+    <a class="nav-link" href="../uml/conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-classes.html">Classes</a>
+    <a class="nav-link" href="../uml/conv-classes.html">Classes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-attributes.html">Class Attributes</a>
+    <a class="nav-link" href="../uml/conv-attributes.html">Class Attributes</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="conv-connectors.html">Connectors</a>
+    <a class="nav-link" href="../uml/conv-connectors.html">Connectors</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="conv-conn-association.html">Association</a>
+    <a class="nav-link" href="../uml/conv-conn-association.html">Association</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="conv-conn-dependency.html">Dependency</a>
+    <a class="nav-link" href="../uml/conv-conn-dependency.html">Dependency</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="conv-conn-generalization.html">Generalization</a>
+    <a class="nav-link" href="../uml/conv-conn-generalization.html">Generalization</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="conv-conn-realization.html">Realization</a>
+    <a class="nav-link" href="../uml/conv-conn-realization.html">Realization</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-datatypes.html">Data Types</a>
+    <a class="nav-link" href="../uml/conv-datatypes.html">Data Types</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-enumerations.html">Enumerations</a>
+    <a class="nav-link" href="../uml/conv-enumerations.html">Enumerations</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-objects.html">Objects</a>
+    <a class="nav-link" href="../uml/conv-objects.html">Objects</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-packages.html">Packages</a>
+    <a class="nav-link" href="../uml/conv-packages.html">Packages</a>
   </li>
 </ul>
   </li>
@@ -112,15 +112,15 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../user-guide/about.html">User guide</a>
+    <a class="nav-link" href="about.html">User guide</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../user-guide/how-to-use.html">How to use</a>
+    <a class="nav-link" href="how-to-use.html">How to use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../user-guide/configuration-file.html">Configuration parameters</a>
+    <a class="nav-link" href="configuration-file.html">Configuration parameters</a>
   </li>
 </ul>
   </li>
@@ -156,15 +156,113 @@
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">model2owl Documentation</a></li>
+    <li><a href="about.html">User guide</a></li>
+  </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/meaningfy-ws/model2owl-docs-gh-pages/edit/main/docs/modules/ROOT/pages/uml/technical-conventions.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/meaningfy-ws/model2owl-docs-gh-pages/edit/main/docs/modules/ROOT/pages/user-guide/about.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-
+<h1 class="page">Introduction</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project provides a set of tools for transforming a UML (v2.5) model from its XMI (v2.5.1) serialisation into a formal OWL ontology and a SHACL shape. This approach adheres to the SEMIC Style Guide and the eProcurement Ontology (ePO) Architecture Specification.</p>
+</div>
+<div class="paragraph">
+<p>The UML transformation is carried out using XSLT stylesheets, assuming that the UML model follows the conventions defined in the ePO UML Conventions documentation. These conventions extend those specified in the SEMIC Style Guide.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_capabilities"><a class="anchor" href="#_key_capabilities"></a>Key Capabilities</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The project supports the following transformations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>UML → Compliance Report</strong> – Validates the UML model against predefined conventions.</p>
+</li>
+<li>
+<p><strong>UML → Glossary</strong> – Generates a glossary of terms based on the UML model.</p>
+</li>
+<li>
+<p><strong>UML → OWL 2 (Core Vocabulary)</strong> – Produces a lightweight ontology suitable for semantic interoperability.</p>
+</li>
+<li>
+<p><strong>UML → OWL 2 (Extended Ontology)</strong> – Generates an enriched ontology with additional axioms for reasoning.</p>
+</li>
+<li>
+<p><strong>UML → SHACL</strong> – Defines SHACL shapes for data validation.</p>
+</li>
+<li>
+<p><strong>UML → SVRL</strong> – Outputs a compliance report in SVRL format.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scripts"><a class="anchor" href="#_scripts"></a>Scripts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following XSLT scripts perform the transformations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>html-conventions-report.xsl</code></strong> – Checks the UML model’s conformance to technical conventions and generates an HTML report.</p>
+</li>
+<li>
+<p><strong><code>html-model-glossary.xsl</code></strong> – Creates a glossary of the UML conceptual model.</p>
+</li>
+<li>
+<p><strong><code>owl-core.xsl</code></strong> – Transforms the UML model into the core OWL ontology.</p>
+</li>
+<li>
+<p><strong><code>shacl-shapes.xsl</code></strong> – Produces SHACL constraints from the UML model.</p>
+</li>
+<li>
+<p><strong><code>owl-restrictions.xsl</code></strong> – Generates OWL restrictions for classes and properties.</p>
+</li>
+<li>
+<p><strong><code>svrl-conventions-report.xsl</code></strong> – Checks the UML model’s compliance with technical conventions and generates an SVRL report.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_script_unit_tests"><a class="anchor" href="#_script_unit_tests"></a>Script Unit Tests</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Unit tests are provided for validating the transformation scripts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><code>test/unitTest/test-html-conventions-lib</code></strong> – Tests the script that checks UML conformance to technical conventions.</p>
+</li>
+<li>
+<p><strong><code>test/unitTest/test-owl-core-lib</code></strong> – Tests the transformation of the UML model into the core OWL ontology.</p>
+</li>
+<li>
+<p><strong><code>test/unitTest/test-shacl-shape-lib</code></strong> – Tests the SHACL data shape constraints transformation.</p>
+</li>
+<li>
+<p><strong><code>test/unitTest/test-reasoning-layer-lib</code></strong> – Tests the transformation of OWL restrictions on classes and properties.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </article>
   </div>
 </main>
