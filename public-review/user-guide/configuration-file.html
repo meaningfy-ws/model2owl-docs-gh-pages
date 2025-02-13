@@ -174,7 +174,7 @@
 <h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The configuration parameters in Model2OWL define various aspects of how the transformation processes work.
+<p>The configuration parameters in model2owl define various aspects of how the transformation processes work.
 These parameters control namespace handling, ontology URIs, stereotype validations, reused concepts generation control,
 tags/comments generation, controlled vocabulary generation and constraints, metadata generation, status filtering.</p>
 </div>
@@ -182,6 +182,28 @@ tags/comments generation, controlled vocabulary generation and constraints, meta
 <p>Understanding these parameters allows users to fine-tune the output of the transformation, ensuring it aligns
 with their requirements. Parameters are primarily stored in <code>config-parameters.xsl</code> and linked XML files such as
 <code>namespaces.xml</code>, <code>umlToXsdDataTypes.xml</code>, and <code>xsdAndRdfDataTypes.xml</code>.</p>
+</div>
+<div class="paragraph">
+<p>The configuration file used in model2owl is not an ordinary XML file. It is an <strong>XSLT-based configuration</strong>,
+meaning that specific syntax and structure must be followed for it to work correctly.
+Parameters are defined as XSLT variables (<code>&lt;xsl:variable&gt;</code>), and their values directly affect the transformation
+process.</p>
+</div>
+<div class="paragraph">
+<p><strong>Important:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When modifying this file, ensure that the <a href="https://www.w3.org/TR/xslt-30/#variables-and-parameters">XSLT specification</a> is strictly followed. Improper syntax or unsupported XSLT elements can cause errors during the transformation process.</p>
+</li>
+<li>
+<p>It is highly recommended to review the existing configuration examples first and understand that each parameter has a specific data type that must be respected.</p>
+</li>
+<li>
+<p>Do not delete variables, as they are essential to the transformation process. Removing them will result in errors.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -278,19 +300,19 @@ allowed characters for normalised strings, default delimiter in URIs, etc.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>base-ontology-uri</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The base URI for the ontology.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data.europa.eu/a4g/ontology" class="bare">http://data.europa.eu/a4g/ontology</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data&#8230;&#8203;eu/a4g/ontology" class="bare">http://data&#8230;&#8203;eu/a4g/ontology</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>base-shape-uri</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The base URI for SHACL shapes.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data.europa.eu/a4g/data-shape" class="bare">http://data.europa.eu/a4g/data-shape</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data&#8230;&#8203;eu/a4g/data-shape" class="bare">http://data&#8230;&#8203;eu/a4g/data-shape</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>base-restriction-uri</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The base URI for OWL restrictions.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data.europa.eu/a4g/ontology" class="bare">http://data.europa.eu/a4g/ontology</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data&#8230;&#8203;eu/a4g/ontology" class="bare">http://data&#8230;&#8203;eu/a4g/ontology</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultDelimiter</code></p></td>
@@ -319,8 +341,8 @@ allowed characters for normalised strings, default delimiter in URIs, etc.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>supportedUmlVersions</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lists the UML versions supported by Model2OWL.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>('http://www.omg.org/spec/UML/20131001', 'https://www.omg.org/spec/UML/20131001', 'http://www.omg.org/spec/UML/20161101', 'https://www.omg.org/spec/UML/20161101')</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lists the UML versions supported by model2owl.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>('http://www.omg&#8230;&#8203;/UML/20131001', 'https://www.omg&#8230;&#8203;/UML/20131001', 'http://www.omg&#8230;&#8203;/UML/20161101', 'https://www.omg&#8230;&#8203;/UML/20161101')</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -329,8 +351,8 @@ allowed characters for normalised strings, default delimiter in URIs, etc.</p>
 <h3 id="_stereotypes_parameters"><a class="anchor" href="#_stereotypes_parameters"></a>Stereotypes parameters</h3>
 <div class="paragraph">
 <p>This section defines the valid stereotypes that can be applied to different UML elements, such as attributes, objects,
-generalisations, associations, dependencies, and classes. Stereotypes provide additional semantic meaning and help
-enforce modelling conventions.</p>
+generalisations, associations, dependencies, and classes. For more details about stereotypes, please refer to
+<a href="../uml/conv-general.adoc#sec:stereotypes-tags">UML Modelling Conventions – Stereotypes and Tags</a>.</p>
 </div>
 <div class="paragraph">
 <p>Certain stereotypes, like "Abstract", classify a class as abstract, while others, such as "Disjoint" and "Equivalent",
@@ -424,39 +446,12 @@ ontology.</p>
 <div class="sect2">
 <h3 id="_controlled_vocabulary_parameters"><a class="anchor" href="#_controlled_vocabulary_parameters"></a>Controlled vocabulary parameters</h3>
 <div class="paragraph">
-<p>This section defines settings for handling controlled vocabularies in Model2OWL. These parameters determine whether
+<p>This section defines settings for handling controlled vocabularies in model2owl. These parameters determine whether
 enumeration items are converted into SKOS concepts and whether entire enumerations are structured as SKOS concept schemes.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, constraint levels can be applied to UML enumeration objects to specify how SHACL shapes should be generated
-for controlled vocabularies. This allows for fine-grained control over validation and enforcement in different datasets.</p>
-</div>
-<div class="sect3">
-<h4 id="_cv_constraint_level"><a class="anchor" href="#_cv_constraint_level"></a>CV Constraint Level</h4>
-<div class="paragraph">
-<p>Due to the diversity of controlled vocabularies (CVs) that a project may use, it is necessary to have precise control
-over the type of SHACL shapes generated for each CV. This information will be stored within the
-UML model itself by using a tag with a key defined in the configuration (cvConstraintLevelProperty).</p>
-</div>
-<div class="paragraph">
-<p>There are two possible constraint levels that determine the type of SHACL shape generated:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>permissive – Generates a permissive SHACL shape for the related UML enumeration.
-restrictive – Generates a restrictive SHACL shape for the related UML enumeration.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Note:</strong></p>
-</div>
-<div class="paragraph">
-<p>A tag with a key specified in <strong><code>cvConstraintLevelProperty</code></strong> is <strong>not included</strong> in Model2OWL artefacts;
-it is used solely to determine the type of SHACL shapes to be generated.</p>
-</div>
-<div class="paragraph">
-<p>If a controlled vocabulary does <strong>not</strong> have a constraint level defined in the model,
-it will <strong>default to a permissive</strong> SHACL shape.</p>
+for controlled vocabularies. This allows for fine-grained control over validation and enforcement in different vocabularies.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -494,6 +489,37 @@ it will <strong>default to a permissive</strong> SHACL shape.</p>
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="_cv_constraint_level"><a class="anchor" href="#_cv_constraint_level"></a>CV Constraint Level</h4>
+<div class="paragraph">
+<p>Due to the diversity of controlled vocabularies (CVs) that a project may use, it is necessary to have precise control
+over the type of SHACL shapes generated for each CV. This information will be stored within the
+UML model itself by using a tag with a key defined in the configuration (cvConstraintLevelProperty).</p>
+</div>
+<div class="paragraph">
+<p>There are two possible <a href="../uml/conv-enumerations.adoc#rule:enumeration-constraint-level">constraint levels</a> that determine the type of SHACL shape generated:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>permissive – Generates a permissive SHACL shape for the related UML enumeration.</p>
+</li>
+<li>
+<p>restrictive – Generates a restrictive SHACL shape for the related UML enumeration.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong></p>
+</div>
+<div class="paragraph">
+<p>A tag with a key specified in <strong><code>cvConstraintLevelProperty</code></strong> is <strong>not included</strong> in model2owl artefacts;
+it is used solely to determine the type of SHACL shapes to be generated.</p>
+</div>
+<div class="paragraph">
+<p>If a controlled vocabulary does <strong>not</strong> have a constraint level defined in the model,
+it will <strong>default to a permissive</strong> SHACL shape.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -612,12 +638,13 @@ it is the <strong>modeller’s responsibility</strong> to ensure that statuses a
 <div class="sect3">
 <h4 id="_status_filtering"><a class="anchor" href="#_status_filtering"></a><strong>Status Filtering</strong></h4>
 <div class="paragraph">
-<p>Status filtering in Model2OWL is fully configurable, allowing users to define <strong>custom status
-values</strong> for UML elements. Model2OWL does not impose fixed status values; instead, users must
+<p>Status filtering in model2owl is fully configurable, allowing users to define <strong>custom status
+values</strong> for UML elements. model2owl does not impose fixed status values; instead, users must
 establish a list of valid statuses for their specific project.</p>
 </div>
-<div class="sect4">
-<h5 id="_status_filtering_guidelines"><a class="anchor" href="#_status_filtering_guidelines"></a><strong>Status Filtering Guidelines</strong></h5>
+</div>
+<div class="sect3">
+<h4 id="_status_filtering_guidelines"><a class="anchor" href="#_status_filtering_guidelines"></a><strong>Status Filtering Guidelines</strong></h4>
 <div class="paragraph">
 <p>The modeller must ensure that statuses are applied correctly to maintain consistency.
 The following cases require special attention:</p>
@@ -643,8 +670,8 @@ elements should also be filtered out.</p>
 included in the generated artefacts.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_defining_statuses_in_uml_models"><a class="anchor" href="#_defining_statuses_in_uml_models"></a><strong>Defining Statuses in UML Models</strong></h5>
+<div class="sect3">
+<h4 id="_defining_statuses_in_uml_models"><a class="anchor" href="#_defining_statuses_in_uml_models"></a><strong>Defining Statuses in UML Models</strong></h4>
 <div class="paragraph">
 <p>Statuses should be assigned to UML elements using <strong>UML tags (tagged values)</strong>. A <strong>compact URI</strong>
 representing the status property should be chosen and applied as a tag to elements where status-based
@@ -654,7 +681,6 @@ filtering is needed.</p>
 <p>Additionally, elements <strong>without a status tag</strong> will be assigned a <strong>default status</strong> defined
 in the configuration (<code>unspecifiedStatusInterpretation</code>). This ensures that even elements
 missing an explicit status can be processed consistently.</p>
-</div>
 </div>
 <div class="sect4">
 <h5 id="_model2owl_status_configuration_parameters"><a class="anchor" href="#_model2owl_status_configuration_parameters"></a><strong>Model2owl status configuration parameters</strong></h5>
@@ -701,12 +727,9 @@ missing an explicit status can be processed consistently.</p>
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_example_status_filtering_in_action"><a class="anchor" href="#_example_status_filtering_in_action"></a><strong>Example: Status Filtering in Action</strong></h5>
-
 </div>
-<div class="sect4">
-<h5 id="_terms_and_assigned_status_tags"><a class="anchor" href="#_terms_and_assigned_status_tags"></a><strong>Terms and Assigned Status Tags</strong></h5>
+<div class="sect3">
+<h4 id="_example_status_filtering_in_action"><a class="anchor" href="#_example_status_filtering_in_action"></a><strong>Example: Status Filtering in Action</strong></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -737,13 +760,13 @@ missing an explicit status can be processed consistently.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:term5</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>work in progress</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>proposed</code></p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p><strong>Model2owl configuration</strong></p>
 </div>
-<div class="sect4">
-<h5 id="_model2owl_configuration"><a class="anchor" href="#_model2owl_configuration"></a><strong>Model2OWL Configuration</strong></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;xsl:variable name="statusProperty" select="'epo:status'"/&gt;
@@ -752,9 +775,9 @@ missing an explicit status can be processed consistently.</p>
 &lt;xsl:variable name="unspecifiedStatusInterpretation" select="'implemented'"/&gt;</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p><strong>Outcome: Included and Excluded Terms</strong></p>
 </div>
-<div class="sect4">
-<h5 id="_outcome_included_and_excluded_terms"><a class="anchor" href="#_outcome_included_and_excluded_terms"></a><strong>Outcome: Included and Excluded Terms</strong></h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -790,8 +813,8 @@ missing an explicit status can be processed consistently.</p>
 </tbody>
 </table>
 </div>
-<div class="sect4">
-<h5 id="_key_takeaways"><a class="anchor" href="#_key_takeaways"></a><strong>Key Takeaways</strong></h5>
+<div class="sect3">
+<h4 id="_key_takeaways"><a class="anchor" href="#_key_takeaways"></a><strong>Key Takeaways</strong></h4>
 <div class="ulist">
 <ul>
 <li>
@@ -808,7 +831,6 @@ missing an explicit status can be processed consistently.</p>
 of an element.</strong> Model2owl interprets these tags to determine element status.</p>
 </li>
 </ul>
-</div>
 </div>
 </div>
 </div>
@@ -853,25 +875,38 @@ editorial notes</strong> within OWL or SHACL outputs.</p>
 <div class="sect2">
 <h3 id="_tags"><a class="anchor" href="#_tags"></a><strong>Tags</strong></h3>
 <div class="paragraph">
-<p>This section defines parameters that control which <strong>tags should be excluded</strong> from the
-generated artefacts.</p>
-</div>
-<div class="paragraph">
-<p>Model2owl relies on <strong>tags</strong> to define certain properties, such as:</p>
+<p>Model2owl uses tags found in the UML model in two distinct ways:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Status of elements</strong> (<code>statusProperty</code>)</p>
+<p>To generate corresponding RDF statements that express metadata about concepts, following the <a href="../transformation/transf-rules4.adoc#rule:element-tag-core">transformation rules for tags</a>.</p>
 </li>
 <li>
-<p><strong>Constraint level of controlled vocabularies</strong> (<code>cvConstraintLevelProperty</code>)</p>
+<p>To control the generation process at the UML element level by using specific tags that describe an element&#8217;s status or constraint level (control tags).</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Since these tags are <strong>only needed internally</strong> for processing and filtering, they
-should <strong>not be included in the generated OWL and SHACL artefacts</strong>.</p>
+<p>Control tags influence the generation process by altering how elements are transformed into semantic artefacts.
+These tags modify or control specific behaviours during the transformation process, such as filtering elements
+based on their status or applying constraints.</p>
+</div>
+<div class="paragraph">
+<p>Model2owl relies on certain tags to define properties such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Status of elements (statusProperty)</p>
+</li>
+<li>
+<p>Constraint level of controlled vocabularies (cvConstraintLevelProperty)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since these tags are only required internally for processing and filtering, they are not included in the generated OWL and SHACL artefacts.</p>
 </div>
 <div class="paragraph">
 <p>The <strong><code>excludedTagNamesList</code></strong> variable ensures that these tags are <strong>filtered out</strong>, preventing them from appearing in the output while still allowing them to control how elements are processed.</p>
@@ -1081,7 +1116,7 @@ ensuring that each generated artefact contains the necessary information.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>preferredNamespaceUri</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines the preferred namespace URI. (vann:preferredNamespaceUri)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data.europa.eu/a4g/ontology#" class="bare">http://data.europa.eu/a4g/ontology#</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data&#8230;&#8203;/a4g/ontology#" class="bare">http://data&#8230;&#8203;/a4g/ontology#</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>preferredNamespacePrefix</code></p></td>
@@ -1099,7 +1134,7 @@ ensuring that each generated artefact contains the necessary information.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>publisher</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines the publisher&#8217;s URI. (dct:publisher)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://publications.europa.eu/resource/authority/corporate-body/PUBL" class="bare">http://publications.europa.eu/resource/authority/corporate-body/PUBL</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://publications&#8230;&#8203;authority/corporate-body/PUBL" class="bare">http://publications&#8230;&#8203;authority/corporate-body/PUBL</a></code></p></td>
 </tr>
 </tbody>
 </table>

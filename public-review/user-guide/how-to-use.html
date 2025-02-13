@@ -203,11 +203,11 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">Without parameters
+<pre class="highlightjs highlight"><code class="language-none hljs"># Without parameters
 
 make install
 
-With parameters
+# With parameters
 
 make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder</code></pre>
 </div>
@@ -247,81 +247,197 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 <ul>
 <li>
 <p><code>generate-glossary</code> – Generates a glossary from the UML export (XML/XMI).</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.</p>
 </li>
 <li>
-<p><strong>Parameters:</strong>
-<code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.
-<code>OUTPUT_GLOSSARY_PATH</code> – Path to the output folder.</p>
+<p><code>OUTPUT_GLOSSARY_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>generate-convention-report</code> – Generates a compliance report from the UML export in HTML format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.</p>
 </li>
 <li>
-<p><strong>Parameters:</strong>
-<code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.
-<code>OUTPUT_CONVENTION_REPORT_PATH</code> – Path to the output folder.</p>
+<p><code>OUTPUT_CONVENTION_REPORT_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>generate-convention-SVRL-report</code> – Generates a compliance report from the UML export in SVRL format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.</p>
 </li>
 <li>
-<p><strong>Parameters:</strong>
-<code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.
-<code>OUTPUT_CONVENTION_REPORT_PATH</code> – Path to the output folder.</p>
+<p><code>OUTPUT_CONVENTION_REPORT_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>owl-core</code> – Generates a lightweight ontology from the UML export.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.</p>
 </li>
 <li>
-<p><strong>Parameters:</strong>
-<code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.
-<code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+<p><code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>owl-restrictions</code> – Generates a heavyweight ontology with additional axioms for reasoning.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.</p>
 </li>
 <li>
-<p><strong>Parameters:</strong>
-<code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.
-<code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+<p><code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>shacl</code> – Generates SHACL data shapes suitable for validation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.</p>
 </li>
 <li>
-<p><strong>Parameters:</strong>
-<code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.
-<code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+<p><code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>generate-html-docs-from-rdf</code> – Generates HTML documentation using Widoco from an RDF file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>WIDOCO_RDF_INPUT_FILE_PATH</code> – Path to the RDF file.</p>
 </li>
 <li>
-<p><strong>Parameters:</strong>
-<code>WIDOCO_RDF_INPUT_FILE_PATH</code> – Path to the RDF file.
-<code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+<p><code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>merge-xmi</code> – Merges XMI files from a specified folder.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>FIRST_XMI_TO_BE_MERGED_FILE_PATH</code> – Path to the first XMI file.</p>
 </li>
 <li>
-<p><strong>Parameters:</strong>
-<code>FIRST_XMI_TO_BE_MERGED_FILE_PATH</code> – Path to the first XMI file.
-<code>XMI_MERGED_OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+<p><code>XMI_MERGED_OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>convert-to-turtle</code> – Converts RDF files to Turtle format.</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p><strong>Parameters:</strong>
-<code>ONTOLOGY_FOLDER_PATH</code> – Path to the folder containing RDF files.</p>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ONTOLOGY_FOLDER_PATH</code> – Path to the folder containing RDF files.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><code>convert-to-rdf</code> – Converts Turtle files to RDF format.</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p><strong>Parameters:</strong>
-<code>ONTOLOGY_FOLDER_PATH</code> – Path to the folder containing Turtle files.</p>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ONTOLOGY_FOLDER_PATH</code> – Path to the folder containing Turtle files.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -372,7 +488,7 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">make create-virtual-env
 
-Then activate it:
+# Then activate it:
 
 source model2owl-venv/bin/activate</code></pre>
 </div>
@@ -404,6 +520,22 @@ source model2owl-venv/bin/activate</code></pre>
 </div>
 <div class="paragraph">
 <p>To set up, copy the default configuration files from the <code>ePO-default-config</code> folder to your new configuration folder.</p>
+</div>
+<div class="paragraph">
+<p>All configuration files should be stored in one folder. Once the configuration is set, update <code>config-proxy.xsl</code> to point
+to the new configuration folder.
+The <code>config-proxy.xsl</code> file serves as a central link to the main configuration file for model2owl.
+It allows the tool to reference and apply the configuration stored at a specified location.
+By modifying this file, users can switch between different configuration sets.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs"># Update the path in config-proxy.xsl:
+&lt;xsl:import href="my-pc/user/my-config-folder/config-parameters.xsl"/&gt;</code></pre>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_configuration_parameters"><a class="anchor" href="#_configuration_parameters"></a>Configuration Parameters</h3>
@@ -440,21 +572,53 @@ the <a href="configuration-file.html">configuration parameters page</a></p>
 </div>
 <div class="sect2">
 <h3 id="_namespaces_configuration"><a class="anchor" href="#_namespaces_configuration"></a>Namespaces Configuration</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_namespaces_configuration_2"><a class="anchor" href="#_namespaces_configuration_2"></a>Namespaces Configuration</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>To add namespaces, edit namespaces.xml:</p>
+<p>To add namespaces, edit <code>namespaces.xml</code>. There are two key tasks you can perform:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Defining a Namespace Prefix and URI</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Add a prefix and its corresponding URI in the <code>namespaces.xml</code> file:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"># Define a namespace prefix and its URI
-&lt;prefix name="foaf" value="http://xmlns.com/foaf/0.1/"/&gt;
-
-# Include an import statement in the final output
-&lt;prefix name="dct" value="http://purl.org/dc/terms/" importURI="http://purl.org/dc/terms/"/&gt;
-
-This will result in the following OWL import statement:
-
-&lt;owl:imports rdf:resource="http://purl.org/dc/terms/"/&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">&lt;prefix name="foaf" value="http://xmlns.com/foaf/0.1/"/&gt;</code></pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Including an import statement in the output</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For a namespace to appear as an import statement in the final output, add the
+importURI attribute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">&lt;prefix name="dct" value="http://purl.org/dc/terms/" importURI="http://purl.org/dc/terms/"/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will result in the following OWL import statement in the output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">&lt;owl:imports rdf:resource="http://purl.org/dc/terms/"/&gt;</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -481,18 +645,6 @@ This will result in the following OWL import statement:
 &lt;/mapping&gt;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>All configuration files should be stored in one folder. Once the configuration is set, update config-proxy.xsl to point to the new configuration folder.</p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs"># Update the path in config-proxy.xsl:
-&lt;xsl:import href="my-pc/user/my-config-folder/config-parameters.xsl"/&gt;</code></pre>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -500,14 +652,102 @@ This will result in the following OWL import statement:
 <h2 id="_running_transformations"><a class="anchor" href="#_running_transformations"></a>Running Transformations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Once installed and configured, run transformations using make commands.</p>
+<p>Once installed and configured, you can run different transformations using <code>make</code> commands.
+Each command generates specific artefacts that correspond to different key capabilities of
+model2owl.</p>
+</div>
+<div class="sect2">
+<h3 id="_commands_and_generated_files"><a class="anchor" href="#_commands_and_generated_files"></a>Commands and Generated Files</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>make owl-core</code> – Generates a lightweight ontology from the UML model.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;input-file&gt;.rdf</code></strong> – Lightweight OWL Core ontology in RDF format.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>make owl-restrictions</code> – Generates heavyweight ontology with additional axioms suitable for reasoning purposes.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;input-file&gt;_restrictions.rdf</code></strong> – OWL Restrictions ontology.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>make shacl</code> – Generates SHACL shapes for data validation.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;input-file&gt;_shapes.rdf</code></strong> – SHACL shapes in RDF format.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>make generate-glossary</code> – Generates an HTML glossary of terms extracted from the UML model.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;input-file&gt;_glossary.html</code></strong> – Glossary in HTML format.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>make generate-convention-report</code> – Generates a compliance report from the UML model in HTML format, validating it against the conventions.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;input-file&gt;_convention_report.html</code></strong> – HTML compliance report.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>make generate-convention-SVRL-report</code> – Generates a compliance report in SVRL format.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;input-file&gt;_convention_svrl_report.xml</code></strong> – SVRL compliance report.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p><strong>Notes</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;input-file&gt;</code> will be replaced with the name of the input XMI file (e.g., <code>file1.rdf</code> if the input is <code>file1.xml</code>).</p>
+</li>
+<li>
+<p>These commands provide flexibility in generating individual artefacts or multiple artefacts based on your needs.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example of transformation command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder</code></pre>
+</div>
 </div>
 </div>
 </div>
