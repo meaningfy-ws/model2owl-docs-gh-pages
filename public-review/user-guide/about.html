@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Untitled :: model2owl documentation</title>
+    <title>Introduction :: model2owl documentation</title>
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../../_/css/site.css">
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">  </head>
@@ -44,50 +44,50 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="definitions.html">Definitions</a>
+    <a class="nav-link" href="../uml/definitions.html">Definitions</a>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="conceptual-model-conventions.html">UML Model Conventions</a>
+    <a class="nav-link" href="../uml/conceptual-model-conventions.html">UML Model Conventions</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-general.html">General Conventions</a>
+    <a class="nav-link" href="../uml/conv-general.html">General Conventions</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-classes.html">Classes</a>
+    <a class="nav-link" href="../uml/conv-classes.html">Classes</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-attributes.html">Class Attributes</a>
+    <a class="nav-link" href="../uml/conv-attributes.html">Class Attributes</a>
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="conv-connectors.html">Connectors</a>
+    <a class="nav-link" href="../uml/conv-connectors.html">Connectors</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="conv-conn-association.html">Association</a>
+    <a class="nav-link" href="../uml/conv-conn-association.html">Association</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="conv-conn-dependency.html">Dependency</a>
+    <a class="nav-link" href="../uml/conv-conn-dependency.html">Dependency</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="conv-conn-generalization.html">Generalization</a>
+    <a class="nav-link" href="../uml/conv-conn-generalization.html">Generalization</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="conv-conn-realization.html">Realization</a>
+    <a class="nav-link" href="../uml/conv-conn-realization.html">Realization</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-datatypes.html">Data Types</a>
+    <a class="nav-link" href="../uml/conv-datatypes.html">Data Types</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-enumerations.html">Enumerations</a>
+    <a class="nav-link" href="../uml/conv-enumerations.html">Enumerations</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-objects.html">Objects</a>
+    <a class="nav-link" href="../uml/conv-objects.html">Objects</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="conv-packages.html">Packages</a>
+    <a class="nav-link" href="../uml/conv-packages.html">Packages</a>
   </li>
 </ul>
   </li>
@@ -112,15 +112,15 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../user-guide/about.html">User guide</a>
+    <a class="nav-link" href="about.html">User guide</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../user-guide/how-to-use.html">How to use</a>
+    <a class="nav-link" href="how-to-use.html">How to use</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../user-guide/configuration-file.html">Configuration parameters</a>
+    <a class="nav-link" href="configuration-file.html">Configuration parameters</a>
   </li>
 </ul>
   </li>
@@ -156,15 +156,69 @@
 <button class="nav-toggle"></button>
   <a href="../index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">model2owl Documentation</a></li>
+    <li><a href="about.html">User guide</a></li>
+  </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/meaningfy-ws/model2owl-docs-gh-pages/edit/main/docs/modules/ROOT/pages/uml/technical-conventions.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/meaningfy-ws/model2owl-docs-gh-pages/edit/main/docs/modules/ROOT/pages/user-guide/about.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-
+<h1 class="page">Introduction</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This user guide provides detailed documentation on <strong>model2owl</strong>, a toolset for transforming UML models into
+various semantic artefacts, including OWL ontologies and SHACL shapes. Model2owl simplifies the transformation
+process by automating the conversion of a UML (v2.5) model from its XMI (v2.5.1) serialisation into formal,
+standards-compliant RDF-based representations.</p>
+</div>
+<div class="paragraph">
+<p>For an overview of <strong>model2owl</strong>, including its purpose and capabilities, please visit the
+<a href="../index.html">main documentation page</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_whats_inside"><a class="anchor" href="#_whats_inside"></a>What’s Inside?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide covers the following key topics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>How to use model2owl:</strong> Step-by-step instructions for using the tool, including installation, configuration, and running transformations.</p>
+</li>
+<li>
+<p><strong>Configuration parameters:</strong> Explanation of the configuration options available, including how to customise the transformation process to meet specific requirements.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_intended_audience"><a class="anchor" href="#_intended_audience"></a>Intended Audience</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This user guide is intended for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Ontology Engineers</strong> and <strong>Semantic Modellers</strong> who want to transform UML models into OWL ontologies and SHACL shapes.</p>
+</li>
+<li>
+<p><strong>Developers</strong> working with the eProcurement Ontology or similar projects requiring semantic artefacts.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </article>
   </div>
 </main>
