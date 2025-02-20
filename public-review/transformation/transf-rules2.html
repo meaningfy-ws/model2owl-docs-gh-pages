@@ -113,18 +113,6 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../user-guide/about.html">User guide</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../user-guide/how-to-use.html">How to use</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../user-guide/configuration-file.html">Configuration parameters</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../references.html">References</a>
   </li>
 </ul>
@@ -1043,7 +1031,8 @@ Sibling classes will be declared disjoint with one another in the reasoning laye
 <div class="title">Rule R.15. Property generalisation&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify sub-property axiom for the generalisation between UML association/dependency connectors.</p>
+<p>Specify a sub-property axiom representing the generalisation between named roles of UML associations. Properties on the subject and object positions correspond to the association roles belonging to the same side of the association ends.
+Such a sub-property axiom is specified for the target side of association ends (for unidirectional associations) or for both source and target sides of the association ends (for bidirectional associations).</p>
 </div>
 </div>
 </div>
