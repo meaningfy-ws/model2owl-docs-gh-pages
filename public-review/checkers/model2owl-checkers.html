@@ -113,6 +113,18 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user-guide/about.html">User guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user-guide/how-to-use.html">How to use</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user-guide/configuration-file.html">Configuration parameters</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="../references.html">References</a>
   </li>
 </ul>
@@ -1216,7 +1228,7 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock">check that generalisations are provided only between Classes or between connectors (ProxyConnector). ONLY: Class &#8594; Class or ProxyConnector &#8594; ProxyConnector</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-connector-unidirectional-connector-direction-10</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-connector-unidirectional-connector-direction-8</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">direction of connectors associated with the generalisation connector doesn&#8217;t match</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The unidirectional connectors $connector1$ and $connector2$ associated with the generalisation connector have opposite directions</p></td>
@@ -1225,14 +1237,14 @@ We provide separate tables for each category of checkers. The columns in these t
 2) if size of the set is 2, then check that the source of the first association is the same as the source of the second association</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-connector-and-missing-class-generalisation-11</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-connector-and-missing-class-generalisation-9</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">missing class generalisation for two distinct classes related to the connector generalisation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The connectors  $connector1$ and $connector2$ associated with the generalisation connector have two different classes $class1$ and $class2$ on one of the connector ends side, but the classes are not in a generalisation relationship</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">perform the two actions for target side of the two connectors and additionally for source side only if the connectors are bidirectional: 1) get a pair of classes linked to a connector end of the considered side (either source or target) for the first and second connectors; 2) check that either both references point out to the same class or a generalisation connector between the two classes exists</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-connector-and-class-inheritance-direction-12</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-connector-and-class-inheritance-direction-10</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">connector generalisation and class generalisation relationship direction mismatch</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The connectors $connector1$ and $connector2$ associated with the generalisation connector have two different classes $class1$ and $class2$ on one of the connector ends side, but direction of the generalisation relation between these classes doesn&#8217;t match the connector generalisation direction</p></td>
