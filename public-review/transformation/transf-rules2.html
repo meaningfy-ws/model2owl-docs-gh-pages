@@ -609,8 +609,9 @@ shape:ClassName-relationName
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
   rdfs:subClassOf [ a owl:Restriction ;
-    owl:minCardinality "1"^^xsd:integer;
     owl:onProperty :relationName ;
+    owl:onClass :AnotherClass ;
+    owl:minQualifiedCardinality "1"^^xsd:integer;
   ] ;
 .</code></pre>
 </div>
@@ -622,7 +623,8 @@ shape:ClassName-relationName
     &lt;rdfs:subClassOf&gt;
         &lt;owl:Restriction&gt;
             &lt;owl:onProperty rdf:resource = "http://base.onto.uri/relationName"/&gt;
-            &lt;owl:minCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:cardinality&gt;
+            &lt;owl:onClass rdf:resource = "http://base.onto.uri/AnotherClass"/&gt;
+            &lt;owl:minQualifiedCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:minQualifiedCardinality&gt;
         &lt;/owl:Restriction&gt;
     &lt;/rdfs:subClassOf&gt;
 &lt;/rdf:Description&gt;</code></pre>
