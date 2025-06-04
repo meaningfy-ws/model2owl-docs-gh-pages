@@ -3,14 +3,17 @@ name: Build Documentation
 on:
   workflow_dispatch:
     inputs:
+      source_repo:
+        description: "source repository name (organization/repo_name)"
+        required: true
+        default: "OP-TED/ted-model2owl-docs"
       source_branch:
-        description: "source branch name (OP-TED/ted-model2owl-docs repository)"
+        description: "source branch name in the given repository"
         required: true
         default: "develop"
 
 env:
   SITE_DIR: 'site'
-  SOURCE_REPO: 'OP-TED/ted-model2owl-docs'
   TARGET_BRANCH: 'gh-pages'
 
 jobs:
@@ -23,7 +26,7 @@ jobs:
       - name: Checkout docs source
         uses: actions/checkout@v4
         with:
-          repository: ${{ env.SOURCE_REPO }}
+          repository: ${{ github.event.inputs.source_repo }}
           ref: ${{ github.event.inputs.source_branch }}
           path: docs
           sparse-checkout: /modules/*
