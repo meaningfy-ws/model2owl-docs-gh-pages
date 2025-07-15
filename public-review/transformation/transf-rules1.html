@@ -1075,19 +1075,14 @@ The UML to OWL mapping supports qualified cardinality restrictions (owl:*qualifi
 <div class="title">Listing 43. Min and max cardinality constraints for datatype property in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
-  rdfs:subClassOf [
-    rdf:type owl:Class ;
-    owl:intersectionOf (
-      [ a owl:Restriction ;
-        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
-        owl:onDataRange xsd:string ;
-        owl:onProperty :property4; ]
-      [ a owl:Restriction ;
-        owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger;
-        owl:onDataRange xsd:string ;
-        owl:onProperty :property4; ]
-      ) ;
-    ] ;
+  rdfs:subClassOf [ a owl:Restriction ;
+      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+      owl:onDataRange xsd:string ;
+      owl:onProperty :property4; ]
+    [ a owl:Restriction ;
+      owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger;
+      owl:onDataRange xsd:string ;
+      owl:onProperty :property4; ]
 .</code></pre>
 </div>
 </div></div></td>
@@ -1096,22 +1091,20 @@ The UML to OWL mapping supports qualified cardinality restrictions (owl:*qualifi
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
-    &lt;owl:Class&gt;
-      &lt;owl:intersectionOf rdf:parseType="Collection"&gt;
-        &lt;owl:Restriction&gt;
-          &lt;owl:onProperty rdf:resource = "http://base.onto.uri/property4"/&gt;
-          &lt;owl:onDataRange rdf:resource = "http://www.w3.org...#string"/&gt;
-          &lt;owl:minQualifiedCardinality rdf:datatype="...#nonNegativeInteger"
-          &gt;1&lt;/owl:minQualifiedCardinality&gt;
-        &lt;/owl:Restriction&gt;
-        &lt;owl:Restriction&gt;
-          &lt;owl:onProperty rdf:resource = "http://base.onto.uri/property4"/&gt;
-          &lt;owl:onDataRange rdf:resource = "http://www.w3.org...#string"/&gt;
-          &lt;owl:maxQualifiedCardinality rdf:datatype="...#nonNegativeInteger"
-          &gt;2&lt;/owl:maxQualifiedCardinality&gt;
-        &lt;/owl:Restriction&gt;
-      &lt;/owl:intersectionOf&gt;
-    &lt;/owl:Class&gt;
+    &lt;owl:Restriction&gt;
+      &lt;owl:onProperty rdf:resource = "http://base.onto.uri/property4"/&gt;
+      &lt;owl:onDataRange rdf:resource = "http://www.w3.org...#string"/&gt;
+      &lt;owl:minQualifiedCardinality rdf:datatype="...#nonNegativeInteger"
+      &gt;1&lt;/owl:minQualifiedCardinality&gt;
+    &lt;/owl:Restriction&gt;
+  &lt;/rdfs:subClassOf&gt;
+  &lt;rdfs:subClassOf&gt;
+    &lt;owl:Restriction&gt;
+      &lt;owl:onProperty rdf:resource = "http://base.onto.uri/property4"/&gt;
+      &lt;owl:onDataRange rdf:resource = "http://www.w3.org...#string"/&gt;
+      &lt;owl:maxQualifiedCardinality rdf:datatype="...#nonNegativeInteger"
+      &gt;2&lt;/owl:maxQualifiedCardinality&gt;
+    &lt;/owl:Restriction&gt;
   &lt;/rdfs:subClassOf&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
@@ -1132,19 +1125,14 @@ The UML to OWL mapping supports qualified cardinality restrictions (owl:*qualifi
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 45. Existential and max cardinality constraints for object property in Turtle syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName
-  rdfs:subClassOf [
-    rdf:type owl:Class ;
-    owl:intersectionOf (
-      [ a owl:Restriction ;
-        owl:someValuesFrom :Prop8Class ;
-        owl:onProperty :property8; ]
-      [ a owl:Restriction ;
-        owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger;
-        owl:onClass :Prop8Class ;
-        owl:onProperty :property8; ]
-      ) ;
-    ] ;
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ClassName rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:someValuesFrom :Prop8Class ;
+      owl:onProperty :property8; ],
+    [ a owl:Restriction ;
+      owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger;
+      owl:onClass :Prop8Class ;
+      owl:onProperty :property8; ]
 .</code></pre>
 </div>
 </div></div></td>
@@ -1153,20 +1141,18 @@ The UML to OWL mapping supports qualified cardinality restrictions (owl:*qualifi
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;rdf:Description rdf:about = "http://base.onto.uri/ClassName"&gt;
   &lt;rdfs:subClassOf&gt;
-    &lt;owl:Class&gt;
-      &lt;owl:intersectionOf rdf:parseType="Collection"&gt;
-        &lt;owl:Restriction&gt;
-          &lt;owl:onProperty rdf:resource = "http://base.onto.uri/property8"/&gt;
-          &lt;owl:someValuesFrom rdf:resource = "http://base.onto.uri/Prop8Class"/&gt;
-        &lt;/owl:Restriction&gt;
-        &lt;owl:Restriction&gt;
-          &lt;owl:onProperty rdf:resource = "http://base.onto.uri/property8"/&gt;
-          &lt;owl:onClass rdf:resource = "http://base.onto.uri/Prop8Class"/&gt;
-          &lt;owl:maxQualifiedCardinality rdf:datatype="...#nonNegativeInteger"
-          &gt;2&lt;/owl:maxQualifiedCardinality&gt;
-        &lt;/owl:Restriction&gt;
-      &lt;/owl:intersectionOf&gt;
-    &lt;/owl:Class&gt;
+    &lt;owl:Restriction&gt;
+      &lt;owl:onProperty rdf:resource = "http://base.onto.uri/property8"/&gt;
+      &lt;owl:someValuesFrom rdf:resource = "http://base.onto.uri/Prop8Class"/&gt;
+    &lt;/owl:Restriction&gt;
+  &lt;/rdfs:subClassOf&gt;
+  &lt;rdfs:subClassOf&gt;
+    &lt;owl:Restriction&gt;
+      &lt;owl:onProperty rdf:resource = "http://base.onto.uri/property8"/&gt;
+      &lt;owl:onClass rdf:resource = "http://base.onto.uri/Prop8Class"/&gt;
+      &lt;owl:maxQualifiedCardinality rdf:datatype="...#nonNegativeInteger"
+      &gt;2&lt;/owl:maxQualifiedCardinality&gt;
+    &lt;/owl:Restriction&gt;
   &lt;/rdfs:subClassOf&gt;
 &lt;/rdf:Description&gt;</code></pre>
 </div>
