@@ -639,7 +639,7 @@ shape:ClassName-relationName
   rdfs:subClassOf [ a owl:Restriction ;
     owl:onProperty :relationName ;
     owl:onClass skos:Concept ;
-    owl:minQualifiedCardinality "1"^^xsd:integer;
+    owl:minQualifiedCardinality "2"^^xsd:nonNegativeinteger;
   ] ;
 .</code></pre>
 </div>
@@ -652,7 +652,7 @@ shape:ClassName-relationName
         &lt;owl:Restriction&gt;
             &lt;owl:onProperty rdf:resource = "http://base.onto.uri/relationName"/&gt;
             &lt;owl:onClass rdf:resource = "http://www.../skos/core#Concept"/&gt;
-            &lt;owl:minQualifiedCardinality rdf:datatype="http://www.w3.org...#integer" &gt;1&lt;/owl:minQualifiedCardinality&gt;
+            &lt;owl:minQualifiedCardinality rdf:datatype="http://...#nonNegativeinteger" &gt;2&lt;/owl:minQualifiedCardinality&gt;
         &lt;/owl:Restriction&gt;
     &lt;/rdfs:subClassOf&gt;
 &lt;/rdf:Description&gt;</code></pre>
