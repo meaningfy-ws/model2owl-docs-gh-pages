@@ -208,6 +208,9 @@ process.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Another type of configuration file is the metadata file, which defines metadata properties used in generating various model2owl artefacts. While it does not control the generation process, it provides important supplementary information that describes the generated data. The metadata file is a JSON file named <code>metadata.json</code> and belongs to the set of configuration files.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -266,6 +269,12 @@ This could result in errors or inconsistent behaviour during the transformation 
 <td class="tableblock halign-left valign-top"><p class="tableblock">XML Document</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines XSD datatypes that conform to OWL2.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(<code>xsdAndRdfDataTypes.xml</code>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>metadataJson</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON Document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines model metadata.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(<code>metadata.json</code>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1020,11 +1029,10 @@ included in the report.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_metadata_parameters"><a class="anchor" href="#_metadata_parameters"></a>Metadata parameters</h3>
+<h3 id="sec:metadata-parameters"><a class="anchor" href="#sec:metadata-parameters"></a>Metadata parameters</h3>
 <div class="paragraph">
-<p>This section defines metadata parameters used in the generation of <strong>OWL Core, OWL Restrictions, and SHACL Shapes</strong> artefacts.
-Metadata plays a crucial role in <strong>identifying, describing, and managing ontology components</strong>,
-ensuring that each generated artefact contains the necessary information.</p>
+<p>This section defines metadata parameters used in the generation of <strong>OWL Core, OWL Restrictions, SHACL Shapes, convention report, and ReSpec documentation</strong> artefacts. Metadata plays a crucial role in <strong>identifying, describing, and managing ontology components</strong>,
+ensuring that each generated artefact contains the necessary information. The described metadata properties should be defined in the <strong>metadata.json JSON file</strong> that belongs to the set of configuration files. An exemplary metadata JSON file is included in the model2owl repository and can be accessed <a href="https://github.com/OP-TED/model2owl/blob/develop/test/ePO-default-config/metadata.json">here</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1043,28 +1051,214 @@ ensuring that each generated artefact contains the necessary information.</p>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>changelogUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL to the changelog or release notes of the project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://github.com/OP-TED/ePO/releases" class="bare">https://github.com/OP-TED/ePO/releases</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List[Object]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of individuals contributing to the project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See description of the object properties below</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.affiliation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organisation or entity with which the contributor is associated</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See description of the object properties below</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.affiliation.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the organisation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACME</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.affiliation.website</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Website of the organisation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.acme.com" class="bare">https://www.acme.com</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.email</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contributor email</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tom.smith@acme.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.first_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contributor first name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Tom</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.last_name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Contributor last name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Smith</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Affiliation name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ACME</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.role</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Role of the contributor in the project; <code>E</code> for editors or <code>A</code> for authors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>E</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>contributors.website</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Affiliation website</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.acme.com" class="bare">https://www.acme.com</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportAuthor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the organization or individual responsible for the convention report</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Publications Office of the European Union</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportAuthorLocation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Geographical location of the authoring organization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Luxembourg</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportAuthorWebsite</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Website URL of the authoring organization</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://op.europa.eu" class="bare">https://op.europa.eu</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportCopyrightText</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Copyright statement displayed in the convention report</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Publications Office of the European Union, 2023</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportUMLModelName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the UML model described in the convention report</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eProcurement</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the ontology&#8217;s creation date. (dct:created)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Automatically set to current date</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>documentConfig</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration parameters for document generation or presentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See description of the object properties below</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>documentConfig.editorDocumentRoot</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root path (URL) for the document used for referencing accompanying assets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>feedbackUrl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the location where one can provide feedback about the specification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://github.com/organization/repo/issues" class="bare">https://github.com/organization/repo/issues</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>github</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A GitHub repository identifier of the project consisting of the owner and repository name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>organization/repo</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>incompatibleWith</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of the ontology that is not compatible with the current version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.1.0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>issuedDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the ontology&#8217;s issuance date. (dct:issued)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Automatically set to current date</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localBiblio</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local bibliography references used in the documentation. See <a href="https://github.com/speced/respec/wiki/localBiblio">ReSpec documentation for localBiblio</a> for more information about the format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Each object key represents a unique reference ID and the value is another object with the properties described below</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localBiblio.ENTRY.href</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://w3id.org/" class="bare">https://w3id.org/</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localBiblio.ENTRY.publisher</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title of the reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>W3C Permanent Identifier Community Group</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localBiblio.ENTRY.title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title of the reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Permanent Identifiers for the Web</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>moduleReference</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines the module reference identifier.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>core</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyTitleCore</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the title for the OWL Core ontology. (dct:title)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePO Core core</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>navigation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Links for navigating between versions of the vocabulary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See description of the object properties below</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyTitleRestrictions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>navigation.next</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the title for the OWL Restrictions ontology. (dct:title)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePO Core restrictions</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL to the next version. Applicable only if a newer version of the documentation exists</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://example.com/releases/6.0.0" class="bare">https://example.com/releases/6.0.0</a></code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyTitleShapes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>navigation.prev</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the title for the SHACL Shapes ontology. (dct:title)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePO Core shapes</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL to the previous version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://example.com/releases/4.2.0" class="bare">https://example.com/releases/4.2.0</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>navigation.self</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL to the current version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://example.com/releases/5.0.0" class="bare">https://example.com/releases/5.0.0</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openGithubIssue</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration for displaying a GitHub issue creation option</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See description of the object properties below</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openGithubIssue.buttonLabel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tooltip text shown when hovering over the feedback button</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Report an issue or share feedback</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openGithubIssue.columnLabel</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label used for a feedback column</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Feedback</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyDescriptionCore</code></p></td>
@@ -1103,40 +1297,40 @@ ensuring that each generated artefact contains the necessary information.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Some text</em></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>issuedDate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the ontology&#8217;s issuance date. (dct:issued)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Automatically set to current date</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdDate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the ontology&#8217;s creation date. (dct:created)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Automatically set to current date</em></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyStatus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyTitleCore</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the status of the ontology. (bibo:status)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Semantic Specification Release</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the title for the OWL Core ontology. (dct:title)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePO Core core</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>versionInfo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyTitleRestrictions</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the ontology version. (owl:versionInfo)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.1.0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the title for the OWL Restrictions ontology. (dct:title)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePO Core restrictions</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>priorVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyTitleShapes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the prior version of the ontology. (owl:priorVersion)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>3.0.1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the title for the SHACL Shapes ontology. (dct:title)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePO Core shapes</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>preferredNamespaceUri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>owners</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List[Object]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of owners of the project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See description of the object properties below</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>owners.name</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the preferred namespace URI. (vann:preferredNamespaceUri)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data&#8230;&#8203;/a4g/ontology#" class="bare">http://data&#8230;&#8203;/a4g/ontology#</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Owner name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Tom Smith</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>owners.website</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Owner website (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.tomsmith.com" class="bare">https://www.tomsmith.com</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>preferredNamespacePrefix</code></p></td>
@@ -1145,16 +1339,46 @@ ensuring that each generated artefact contains the necessary information.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>epo</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>licenseLiteral</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>preferredNamespaceUri</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the licensing terms for the ontology. (dct:license)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Creative Commons Attribution 4.0 International (CC BY 4.0)</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the preferred namespace URI. (vann:preferredNamespaceUri)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data&#8230;&#8203;/a4g/ontology#" class="bare">http://data&#8230;&#8203;/a4g/ontology#</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>priorVersion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the prior version of the ontology. (owl:priorVersion)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>4.2.0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>publisher</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines the publisher&#8217;s URI. (dct:publisher)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://publications&#8230;&#8203;authority/corporate-body/PUBL" class="bare">http://publications&#8230;&#8203;authority/corporate-body/PUBL</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>seeAlsoResources</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Array[String]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of URLs providing additional resources or references related to the ontology</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>['https://example1.com', 'https://example2.com']</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the status of the ontology. (bibo:status)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Draft</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>title</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A human-readable title to be used in the ReSpec document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>My ontology</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>versionInfo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the ontology version. (owl:versionInfo)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>5.0.0</code></p></td>
 </tr>
 </tbody>
 </table>

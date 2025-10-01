@@ -417,7 +417,7 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 <div id="sec:generate-respec-cmd" class="ulist">
 <ul>
 <li>
-<p><code>generate-respec</code> – Creates a ReSpec HTML documentation package for an ontology using Jinja2 with templates based on XMI file, ReSpec JSON file and static assets. This command does not generate other RDF artefacts, so they need to be generated separately and provided as input to this command.</p>
+<p><code>generate-respec</code> – Creates an HTML documentation package for an ontology using Jinja2 and ReSpec. The command expects the input model, metadata and a set of assets to be provided. The generated package is ready to be hosted on a web server. This command does not generate other RDF artefacts, so they need to be generated separately and provided as input to this command.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -456,6 +456,35 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 </li>
 <li>
 <p><code>JSONLD_CONTEXT_FILE_PATH</code> – Path to the generated JSON-LD context file.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>respec-json</code> – An auxiliary command that generates the ReSpec data JSON file from the input XMI file. The command is used by the <code>generate-respec</code> command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.</p>
+</li>
+<li>
+<p><code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+</li>
+<li>
+<p><code>NAMESPACES_USER_XML_FILE_PATH</code> – Path to the *.xml file containing namespaces.</p>
+</li>
+<li>
+<p><code>IMPORTS_XML_FILE_PATH</code> – Path to the *.xml file containing ontology URIs to be imported.</p>
+</li>
+<li>
+<p><code>RESPEC_JSON_INDENTATION</code> – (Optional) Number of spaces for indentation in the generated JSON file. Default is 2.</p>
 </li>
 </ul>
 </div>
@@ -578,7 +607,7 @@ source model2owl-venv/bin/activate</code></pre>
 <h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The model2owl configuration consists of five files, which should be placed in a single folder:</p>
+<p>The model2owl configuration consists of six files, which should be placed in a single folder:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -596,6 +625,9 @@ source model2owl-venv/bin/activate</code></pre>
 </li>
 <li>
 <p><code>xsdAndRdfDataTypes.xml</code> – Defines data types used.</p>
+</li>
+<li>
+<p><code>metadata.json</code> – Contains metadata describing the processed model, which is used to generate RDF and ReSpec artefacts.</p>
 </li>
 </ul>
 </div>
@@ -629,7 +661,7 @@ By modifying this file, users can switch between different configuration sets.</
 <div class="ulist">
 <ul>
 <li>
-<p>Do not modify the <code>namespacePrefixes</code>, <code>umlDataTypesMapping</code>, or <code>xsdAndRdfDataTypes</code> variables.</p>
+<p>Do not modify the <code>namespacePrefixes</code>, <code>umlDataTypesMapping</code>, <code>xsdAndRdfDataTypes</code>, or <code>metadataJson</code> variables.</p>
 </li>
 <li>
 <p>Ensure any modified variable retains its original datatype (boolean, string, list).</p>
@@ -752,6 +784,12 @@ corresponding to the artefact of interest, e.g., <code>shacl</code>).</p>
     &lt;to qname="xsd:date"/&gt;
 &lt;/mapping&gt;</code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_metadata_json"><a class="anchor" href="#_metadata_json"></a>Metadata JSON</h3>
+<div class="paragraph">
+<p>All predefined properties should be updated in the <code>metadata.json</code> file by the editor as described in <a href="#sec:metadata-parameters">Metadata parameters</a>. The editor can also add custom properties to be used in the generated ReSpec documentation as described in <a href="#sec:respec-custom-metadata">Custom metadata</a> section.</p>
 </div>
 </div>
 </div>
