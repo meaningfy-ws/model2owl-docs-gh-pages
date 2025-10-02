@@ -185,12 +185,12 @@
 <h2 id="_usage"><a class="anchor" href="#_usage"></a>Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section provides a step-by-step guide on how to generate ReSpec documentation using model2owl. The process is the same but can differ in details depending on whether model2owl is used locally or in an automated workflow (see <a href="how-to-use.adoc">How to use</a> page).</p>
+<p>This section provides a step-by-step guide on how to generate ReSpec documentation using model2owl. The process is the same but can differ in details depending on whether model2owl is used locally or in an automated workflow (see <a href="how-to-use.html">How to use</a> page).</p>
 </div>
 <div class="sect2">
 <h3 id="_prepare_an_input_uml_model_in_xmi_format"><a class="anchor" href="#_prepare_an_input_uml_model_in_xmi_format"></a>Prepare an input UML model in XMI format</h3>
 <div class="paragraph">
-<p>Export the UML model from your modelling tool in XMI format. Make sure that the XMI file conforms to the UML standard supported by model2owl (see <a href="about.adoc#sec:introduction">Introduction</a>). The file will be used as input for the model2owl transformation process.
+<p>Export the UML model from your modelling tool in XMI format. Make sure that the XMI file conforms to the UML standard supported by model2owl (see <a href="about.html#sec:introduction">Introduction</a>). The file will be used as input for the model2owl transformation process.
 The source project with the UML model can be added to an asset folder for inclusion in the ReSpec documentation (see <a href="#sec:input-assets">Input assets</a>).</p>
 </div>
 </div>
@@ -201,7 +201,7 @@ The source project with the UML model can be added to an asset folder for inclus
 </div>
 <div class="paragraph">
 <p>If provided, the ReSpec documentation can include references to the model2owl artefacts generated from the input UML model (see <a href="#sec:model2owl-artefacts">model2owl artefacts</a>).
-These files need to be generated prior to generating the ReSpec documentation. See <a href="how-to-use.adoc#sec:functional-commands">Functional Commands</a> for instructions on how to generate these artefacts using model2owl. The artefacts are not essential for generating the documentation; therefore, the generation process can be executed without them. In such cases, the documentation will not include references to these files.</p>
+These files need to be generated prior to generating the ReSpec documentation. See <a href="how-to-use.html#sec:functional-commands">Functional Commands</a> for instructions on how to generate these artefacts using model2owl. The artefacts are not essential for generating the documentation; therefore, the generation process can be executed without them. In such cases, the documentation will not include references to these files.</p>
 </div>
 </div>
 <div class="sect2">
@@ -232,7 +232,7 @@ The <code>metadata.json</code> file is typically stored in the same location as 
 <div class="sect2">
 <h3 id="_run_the_generation_process"><a class="anchor" href="#_run_the_generation_process"></a>Run the generation process</h3>
 <div class="paragraph">
-<p>If using model2owl locally, run the <code>generate-respec</code> command with appropriate parameters (see <a href="how-to-use.adoc#sec:generate-respec-cmd">the command</a>).</p>
+<p>If using model2owl locally, run the <code>generate-respec</code> command with appropriate parameters (see <a href="how-to-use.html#sec:generate-respec-cmd">the command</a>).</p>
 </div>
 <div class="paragraph">
 <p>If using model2owl in an automated workflow (a project repository based on model2owl-boilerplate), the generation process is triggered automatically when a change in the repository is detected. The workflow executes the model2owl command, using configuration and data files present in the repository.</p>
