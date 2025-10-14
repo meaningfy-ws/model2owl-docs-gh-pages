@@ -434,7 +434,7 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <div class="title">Rule R.03. Association &amp; dependency&#8201;&#8212;&#8201;in JSON-LD context layer</div>
 <div class="content">
 <div class="paragraph">
-<p>For each UML association/dependency, specify an object property by creating a property URI mapping with an absolute URI of a target end in a node object. Set the term definition as a top-level entry of the context object. For bidirectional connectors, additionally specify an extended term definition for the source end.</p>
+<p>For each UML association/dependency, specify an object property by creating a property URI mapping with an absolute URI of a target end in a node object. Set the term definition as a top-level entry inside the class’s inner context object. For bidirectional connectors, additionally specify an extended term definition for the source end.</p>
 </div>
 </div>
 </div>
@@ -447,11 +447,15 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 5. Association/dependency term mapping in JSON-LD syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"ClassName.relatesTo": {
- "@id":"http://base.onto.uri/relatesTo"
-}
-"ClassName.dependencyName": {
- "@id":"http://base.onto.uri/dependencyName"
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"ClassName": {
+ "@context": {
+    "relatesTo": {
+      "@id":"http://base.onto.uri/relatesTo"
+    },
+    "dependencyName": {
+      "@id":"http://base.onto.uri/dependencyName"
+    }
+  }
 }</code></pre>
 </div>
 </div></div></td>
@@ -636,7 +640,7 @@ shape:ClassName-relationName
 <div class="title">Rule R.07. Association &amp; dependency range&#8201;&#8212;&#8201;in JSON-LD context layer</div>
 <div class="content">
 <div class="paragraph">
-<p>For each UML association/dependency, specify the object property range by creating a type coercion entry in a node object. Set the fixed <code>@id</code> keyword as a value to indicate that that the value of the term should be interpreted as an URI. Set the term definition as a top-level entry of the context object. For bidirectional connectors, additionally specify the object property range for the source end.</p>
+<p>For each UML association/dependency, specify the object property range by creating a type coercion entry in a node object. Set the fixed <code>@id</code> keyword as a value to indicate that that the value of the term should be interpreted as an URI. Set the term definition as a top-level entry inside the class’s inner context object. For bidirectional connectors, additionally specify the object property range for the source end.</p>
 </div>
 </div>
 </div>
@@ -649,11 +653,15 @@ shape:ClassName-relationName
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 16. Type coercion for association &amp; dependency in JSON-LD syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"ClassName.relatesTo": {
-  "@type": "@id"
-}
-"ClassName.dependencyName": {
-  "@type": "@id"
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"ClassName": {
+ "@context": {
+    "relatesTo": {
+      "@type":"@id"
+    },
+    "dependencyName": {
+      "@type":"@id"
+    }
+  }
 }</code></pre>
 </div>
 </div></div></td>
@@ -779,8 +787,8 @@ shape:ClassName-relationName
 <div class="title">Rule R.11. Association &amp; dependency container&#8201;&#8212;&#8201;in JSON-LD context layer</div>
 <div class="content">
 <div class="paragraph">
-<p>Specify a default container type for each UML association/dependency that can accept more than a one value, setting the fixed <code>@set</code> keyword as a value for the <code>@container</code> key.
-Set the container type entry for an association/dependency target end, inside a term definition created as a top-level entry of the context object. For bidirectional connectors, additionally specify the container type for the source end.</p>
+<p>Specify a default container type for each UML association/dependency that can accept more than a one value by setting the fixed <code>@set</code> keyword as a value for the <code>@container</code> key.
+Set the container type entry for an association/dependency target end, inside a term definition created as a top-level entry inside the class’s inner context object. For bidirectional connectors, additionally specify the container type for the source end.</p>
 </div>
 </div>
 </div>
@@ -793,11 +801,15 @@ Set the container type entry for an association/dependency target end, inside a 
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="title">Listing 23. Association &amp; dependency container definition in JSON-LD syntax</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"ClassName.relatesTo": {
- "@container": "@set"
-}
-"ClassName.dependencyName": {
- "@container": "@set"
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">"ClassName": {
+  "@context": {
+    "relatesTo": {
+      "@container": "@set"
+    },
+    "dependencyName": {
+      "@container": "@set"
+    }
+  }
 }</code></pre>
 </div>
 </div></div></td>
