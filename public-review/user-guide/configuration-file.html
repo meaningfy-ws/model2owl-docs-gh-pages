@@ -978,12 +978,10 @@ based on their status or applying constraints.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_convention_report_parameters"><a class="anchor" href="#_convention_report_parameters"></a>Convention report parameters</h3>
+<h3 id="_respec_documentation_parameters"><a class="anchor" href="#_respec_documentation_parameters"></a>ReSpec documentation parameters</h3>
 <div class="paragraph">
-<p>This section defines parameters used in the <strong>generation of the convention report</strong>. The convention report provides a
-structured evaluation of the UML model, ensuring it adheres to predefined rules and best practices. These parameters
-allow users to <strong>customise report metadata</strong>, such as the copyright statement, author details, and the UML model name
-included in the report.</p>
+<p>This section defines parameters used in the <strong>generation of the ReSpec documentation</strong>. The ReSpec documentation provides a comprehensive description of the generated model. These parameters
+allow users to <strong>control and customize which information is displayed and how it is presented in the document</strong>, such as usage and reuse notes, property status, and more. The parameters described here can be set in the config-parameters.xsl file. The <a href="#sec:metadata-parameters">Metadata parameters</a> section provides a description of metadata properties configured in the <em>metadata JSON file</em> that are also applicable to the ReSpec documentation.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1002,34 +1000,40 @@ included in the report.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportCopyrightText</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>classReferenceRespecLabel</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the copyright text for the convention report.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Publications Office of the European Union, 2023</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the label used in ReSpec documentation to describe values of <code>referenceTagName</code> for classes. Applies only if the <code>showReferencesInRespec</code> is enabled.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Reference</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportAuthor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>customTermLabelTagName</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the author of the convention report.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Publications Office of the European Union</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the tag name used as a custom label for terms in the ReSpec documentation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>skos:prefLabel</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportAuthorLocation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>propertyReferenceRespecLabel</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the location of the report&#8217;s author.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Luxembourg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the label used in ReSpec documentation to describe values of <code>referenceTagName</code> for properties. Applies only if the <code>showReferencesInRespec</code> is enabled.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Reuse</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportAuthorWebsite</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>referenceTagName</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the website of the report&#8217;s author.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://op.europa.eu" class="bare">https://op.europa.eu</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the tag name used to provide reference links or reuse information for a class or property. Applies only if the <code>showReferencesInRespec</code> is enabled.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dct:references</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>conventionReportUMLModelName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showReferencesInRespec</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls whether reference or reuse information is displayed in ReSpec documentation for classes and properties.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>usageNoteTagName</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the name of the UML model in the report.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>eProcurement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the tag name used to describe a usage note of a class or property.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>skos:note</code></p></td>
 </tr>
 </tbody>
 </table>
