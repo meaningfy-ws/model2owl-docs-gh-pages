@@ -255,7 +255,7 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 <div class="ulist">
 <ul>
 <li>
-<p><code>generate-glossary</code> – Generates a glossary from the UML export (XML/XMI).</p>
+<p><code>generate-glossary</code> – Generates an HTML glossary from the UML export (XML/XMI).</p>
 <div class="ulist">
 <ul>
 <li>
@@ -267,6 +267,33 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 </li>
 <li>
 <p><code>OUTPUT_GLOSSARY_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>generate-asciidoc-glossary</code> – Generates an AsciiDoc glossary from the UML export (XML/XMI), optionally creating the model data JSON file if it is not provided.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the UML XMI model file required for generating the ReSpec data JSON file (used only if <code>MODEL_DATA_JSON_PATH</code> is not provided).</p>
+</li>
+<li>
+<p><code>MODEL_DATA_JSON_PATH</code> – (Optional) Path to the ReSpec data JSON file.
+If omitted, the file will be generated automatically.</p>
+</li>
+<li>
+<p><code>OUTPUT_GLOSSARY_PATH</code> – Output directory for the glossary file.</p>
+</li>
+<li>
+<p><code>OUTPUT_FOLDER_PATH</code> – (Optional) Directory where the generated ReSpec data JSON file should be stored (used only if <code>MODEL_DATA_JSON_PATH</code> is not provided). If not set, then the default directory is used.</p>
 </li>
 </ul>
 </div>
@@ -868,6 +895,17 @@ model2owl.</p>
 <li>
 <p>Generated File:
 <strong><code>&lt;input-file&gt;_glossary.html</code></strong> – Glossary in HTML format.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>make generate-asciidoc-glossary</code> – Generates an AsciiDoc glossary of terms extracted from the UML model.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;input-file&gt;_glossary.adoc</code></strong> – Glossary in AsciiDoc format.</p>
 </li>
 </ul>
 </div>
