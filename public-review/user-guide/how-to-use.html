@@ -125,6 +125,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="respec-documentation.html">ReSpec documentation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rdf-diffing.html">RDF diffing documentation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -242,6 +245,15 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 <p><code>install</code> – Executes all the above installation steps automatically.</p>
 </li>
 <li>
+<p><code>get-rdf-differ</code> – Installs RDF Differ in a local directory.</p>
+</li>
+<li>
+<p><code>start-rdf-differ-services</code> – Starts Docker-based RDF Differ and Traefik services.</p>
+</li>
+<li>
+<p><code>stop-rdf-differ-services</code> – Stops RDF Differ Docker and Traefik services.</p>
+</li>
+<li>
 <p><code>create-virtual-env</code> – Creates a Python virtual environment for the project.</p>
 </li>
 </ul>
@@ -255,7 +267,7 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 <div class="ulist">
 <ul>
 <li>
-<p><code>generate-glossary</code> – Generates an HTML glossary from the UML export (XML/XMI).</p>
+<p><code>generate-glossary</code> – Generates a glossary from the UML export (XML/XMI).</p>
 <div class="ulist">
 <ul>
 <li>
@@ -267,33 +279,6 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 </li>
 <li>
 <p><code>OUTPUT_GLOSSARY_PATH</code> – Path to the output folder.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><code>generate-asciidoc-glossary</code> – Generates an AsciiDoc glossary from the UML export (XML/XMI), optionally creating the model data JSON file if it is not provided.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Parameters:</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>XMI_INPUT_FILE_PATH</code> – Path to the UML XMI model file required for generating the ReSpec data JSON file (used only if <code>MODEL_DATA_JSON_PATH</code> is not provided).</p>
-</li>
-<li>
-<p><code>MODEL_DATA_JSON_PATH</code> – (Optional) Path to the ReSpec data JSON file.
-If omitted, the file will be generated automatically.</p>
-</li>
-<li>
-<p><code>OUTPUT_GLOSSARY_PATH</code> – Output directory for the glossary file.</p>
-</li>
-<li>
-<p><code>OUTPUT_FOLDER_PATH</code> – (Optional) Directory where the generated ReSpec data JSON file should be stored (used only if <code>MODEL_DATA_JSON_PATH</code> is not provided). If not set, then the default directory is used.</p>
 </li>
 </ul>
 </div>
@@ -531,6 +516,46 @@ If omitted, the file will be generated automatically.</p>
 </div>
 </li>
 <li>
+<p><code>merge-owl-shacl</code> – Merges an OWL ontology file with a SHACL shapes file into a combined output TTL file. Useful to extend diffing coverage for with selected properties from the SHACL shapes file.
+<strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>MERGE_ONTOLOGY_FILE</code> – Path to the OWL ontology file (default: <code>test/diffing-files/ePO_core-4.1.0.ttl</code>).</p>
+</li>
+<li>
+<p><code>MERGE_SHAPES_FILE</code> – Path to the SHACL shapes file (default: <code>test/diffing-files/ePO_core_shapes-4.1.0.ttl</code>).</p>
+</li>
+<li>
+<p><code>MERGE_OUTPUT_FILE</code> – Path to the output file (default: <code>${OUTPUT_FOLDER_PATH}/ePO_core_combined-1.0.ttl</code>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>run-rdf-diff</code> – Runs the RDF diffing workflow using RDF Differ services and produces a diff report. The report type is determined by the <code>RDF_DIFF_TEMPLATE</code>.
+<strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>RDF_DIFF_FILE1</code> – Path to the first RDF file (default: <code>test/diffing-files/ePO_core-4.1.0.ttl</code>).</p>
+</li>
+<li>
+<p><code>RDF_DIFF_FILE2</code> – Path to the second RDF file (default: <code>test/diffing-files/ePO_core-4.2.0.ttl</code>).</p>
+</li>
+<li>
+<p><code>RDF_DIFF_OUTDIR</code> – Output directory for the diff results (default: <code>${OUTPUT_FOLDER_PATH}</code>).</p>
+</li>
+<li>
+<p><code>RDF_DIFF_AP</code> – Application profile used for diffing (default: <code>owl-core-en-only</code>).</p>
+</li>
+<li>
+<p><code>RDF_DIFF_TEMPLATE</code> – Template format for the diff report (default: <code>html</code>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><code>merge-xmi</code> – Merges XMI files from a specified folder.</p>
 <div class="ulist">
 <ul>
@@ -668,6 +693,9 @@ source model2owl-venv/bin/activate</code></pre>
 <p><code>metadata.json</code> – Contains metadata describing the processed model, which is used to generate RDF and ReSpec artefacts.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>In addition, configuration for a workflow in model2owl-boilerplate project implementing the RDF diffing feature can be set using <a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables#creating-configuration-variables-for-a-repository">Github Variables</a> as described in the <a href="configuration-file.html#sec:rdf-diffing-configuration">RDF diffing configuration</a> section.</p>
 </div>
 <div class="paragraph">
 <p>To set up, copy the default configuration files from the <code>ePO-default-config</code> folder to your new configuration folder.</p>
@@ -900,17 +928,6 @@ model2owl.</p>
 </div>
 </li>
 <li>
-<p><code>make generate-asciidoc-glossary</code> – Generates an AsciiDoc glossary of terms extracted from the UML model.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Generated File:
-<strong><code>&lt;input-file&gt;_glossary.adoc</code></strong> – Glossary in AsciiDoc format.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p><code>make generate-convention-report</code> – Generates a compliance report from the UML model in HTML format, validating it against the conventions.</p>
 <div class="ulist">
 <ul>
@@ -943,10 +960,28 @@ model2owl.</p>
 </ul>
 </div>
 </li>
-</ol>
+<li>
+<p><code>make merge-owl-shacl</code> – Merge OWL ontology and SHACL shapes files. Used as a preprocessing step before calling <code>run-rdf-diff</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;output-dir&gt;/&lt;file-name&gt;.ttl</code></strong> – An RDF file combining content of provided OWL core and SHACL shapes files.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p><strong>Notes</strong></p>
+</li>
+<li>
+<p><code>make run-rdf-diff</code> – Generates a diff report in a format specified by the user (JSON / AsciiDoc / HTML).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:</p>
+<div class="literalblock">
+<div class="content">
+<pre>     **`&lt;output-dir&gt;/diff.&lt;report-extension&gt;`** – A diff report listing changes between two versions of an RDF file.
+**Notes**</pre>
+</div>
 </div>
 <div class="ulist">
 <ul>
@@ -957,6 +992,12 @@ model2owl.</p>
 <p>These commands provide flexibility in generating individual artefacts or multiple artefacts based on your needs.</p>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Example of transformation command:</p>

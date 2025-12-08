@@ -125,6 +125,9 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="respec-documentation.html">ReSpec documentation</a>
   </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="rdf-diffing.html">RDF diffing documentation</a>
+  </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
@@ -649,7 +652,7 @@ even if they would sometimes be classified as reused.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>generateReusedConceptsGlossary</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables the inclusion of reused concepts in the glossary. Applies to glossaries generated in both HTML and AsciiDoc formats.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables the inclusion of reused concepts in the glossary.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
 </tr>
 </tbody>
@@ -1410,6 +1413,88 @@ ensuring that each generated artefact contains the necessary information. The de
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="sec:rdf-diffing-configuration"><a class="anchor" href="#sec:rdf-diffing-configuration"></a><strong>RDF diffing configuration</strong></h3>
+<div class="paragraph">
+<p>This section defines parameters that control <strong>the automated diffing process</strong> implemented in a Github workflow of model2owl-boilerplate project. It&#8217;s relevant only for the online use of the diffing feature.</p>
+</div>
+<div class="paragraph">
+<p>The workflow compares two versions of a model (as described on the <a href="rdf-diffing.html">Diffing</a> page).
+The following table describes configuration parameters that can be specified for the workflow as <a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables#creating-configuration-variables-for-a-repository">Github Variables</a> in the <a href="https://github.com/OP-TED/model2owl-boilerplate/settings/variables/actions">Github project</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter Name</th>
+<th class="tableblock halign-left valign-top">Data Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REVISION_TO_COMPARE_COMMIT_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Specification of a Git revision (branch, tag or SHA)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>release/5.0.0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REVISION_TO_COMPARE_REPO_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) URL of an external public Git repository.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://github.com/OP-TED/ePO.git" class="bare">https://github.com/OP-TED/ePO.git</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OLD_ONTOLOGY_FILE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the old version; a path to an OWL core file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/ePO_core/owl_ontology/ePO_core.ttl</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OLD_SHACL_FILE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the old version; a path to a SHACL shapes file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/ePO_core/shacl_shapes/ePO_core_shapes.ttl</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NEW_ONTOLOGY_FILE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the new version; a path to an OWL core file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/demo_ontology/owl_ontology/demo_ontology_CM.ttl</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NEW_SHACL_FILE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the new version; a path to a SHACL shapes file.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/demo_ontology/shacl_shapes/demo_ontology_CM_shapes.ttl</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RDF_DIFF_OUTDIR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output directory for generated diffing reports.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>diff-reports</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RDF_DIFF_AP</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier of an application profile used. No need to change it unless following a customized diffing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>owl-core-en-only</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note that the paths specified in <code>OLD_ONTOLOGY_FILE</code> and <code>OLD_SHACL_FILE</code> are resolved according to values of <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> parameters. The following cases are supported by the workflow:
+* <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> specified: an RDF file is fetched from an external Git repository, following the specified revision and path.
+* <code>REVISION_TO_COMPARE_COMMIT_ID</code> specified: an RDF file is fetched from the same Git repository, following the specified revision and path.
+* <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> not specified: an RDF file is fetched from the same Git repository, following the specified path. The current revision (the one that the workflow runs on) is used.</p>
+</div>
 </div>
 </div>
 </div>
