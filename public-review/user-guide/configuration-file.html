@@ -1455,25 +1455,25 @@ The following table describes configuration parameters that can be specified for
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OLD_ONTOLOGY_FILE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the old version; a path to an OWL core file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/ePO_core/owl_ontology/ePO_core.ttl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/ ePO_core/owl_ontology/ePO_core.ttl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OLD_SHACL_FILE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the old version; a path to a SHACL shapes file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/ePO_core/shacl_shapes/ePO_core_shapes.ttl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/ ePO_core/shacl_shapes/ePO_core_shapes.ttl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>NEW_ONTOLOGY_FILE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the new version; a path to an OWL core file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/demo_ontology/owl_ontology/demo_ontology_CM.ttl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/demo_ontology/ owl_ontology/demo_ontology_CM.ttl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>NEW_SHACL_FILE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the new version; a path to a SHACL shapes file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/demo_ontology/shacl_shapes/demo_ontology_CM_shapes.ttl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/demo_ontology/ shacl_shapes/demo_ontology_CM_shapes.ttl</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>RDF_DIFF_OUTDIR</code></p></td>
@@ -1490,10 +1490,20 @@ The following table describes configuration parameters that can be specified for
 </tbody>
 </table>
 <div class="paragraph">
-<p>Note that the paths specified in <code>OLD_ONTOLOGY_FILE</code> and <code>OLD_SHACL_FILE</code> are resolved according to values of <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> parameters. The following cases are supported by the workflow:
-* <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> specified: an RDF file is fetched from an external Git repository, following the specified revision and path.
-* <code>REVISION_TO_COMPARE_COMMIT_ID</code> specified: an RDF file is fetched from the same Git repository, following the specified revision and path.
-* <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> not specified: an RDF file is fetched from the same Git repository, following the specified path. The current revision (the one that the workflow runs on) is used.</p>
+<p>Note that the paths specified in <code>OLD_ONTOLOGY_FILE</code> and <code>OLD_SHACL_FILE</code> are resolved according to values of <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> parameters. The following cases are supported by the workflow:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> specified: an RDF file is fetched from an external Git repository, following the specified revision and path.</p>
+</li>
+<li>
+<p><code>REVISION_TO_COMPARE_COMMIT_ID</code> specified: an RDF file is fetched from the same Git repository, following the specified revision and path.</p>
+</li>
+<li>
+<p><code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> not specified: an RDF file is fetched from the same Git repository, following the specified path. The current revision (the one that the workflow runs on) is used.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>

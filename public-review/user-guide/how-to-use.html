@@ -516,8 +516,11 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 </div>
 </li>
 <li>
-<p><code>merge-owl-shacl</code> – Merges an OWL ontology file with a SHACL shapes file into a combined output TTL file. Useful to extend diffing coverage for with selected properties from the SHACL shapes file.
-<strong>Parameters:</strong></p>
+<p><code>merge-owl-shacl</code> – Merges an OWL ontology file with a SHACL shapes file into a combined output TTL file. Useful to extend diffing coverage for with selected properties from the SHACL shapes file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -532,9 +535,15 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 </ul>
 </div>
 </li>
+</ul>
+</div>
+</li>
 <li>
-<p><code>run-rdf-diff</code> – Runs the RDF diffing workflow using RDF Differ services and produces a diff report. The report type is determined by the <code>RDF_DIFF_TEMPLATE</code>.
-<strong>Parameters:</strong></p>
+<p><code>run-rdf-diff</code> – Runs the RDF diffing workflow using RDF Differ services and produces a diff report. The report type is determined by the <code>RDF_DIFF_TEMPLATE</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -551,6 +560,9 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 </li>
 <li>
 <p><code>RDF_DIFF_TEMPLATE</code> – Template format for the diff report (default: <code>html</code>).</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -976,12 +988,16 @@ model2owl.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Generated File:</p>
-<div class="literalblock">
-<div class="content">
-<pre>     **`&lt;output-dir&gt;/diff.&lt;report-extension&gt;`** – A diff report listing changes between two versions of an RDF file.
-**Notes**</pre>
+<p>Generated File:
+<strong><code>&lt;output-dir&gt;/diff.&lt;report-extension&gt;</code></strong> – A diff report listing changes between two versions of an RDF file.</p>
+</li>
+</ul>
 </div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Notes</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -992,12 +1008,6 @@ model2owl.</p>
 <p>These commands provide flexibility in generating individual artefacts or multiple artefacts based on your needs.</p>
 </li>
 </ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>Example of transformation command:</p>
