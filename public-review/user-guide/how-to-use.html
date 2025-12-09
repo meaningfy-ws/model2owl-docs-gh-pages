@@ -267,7 +267,7 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 <div class="ulist">
 <ul>
 <li>
-<p><code>generate-glossary</code> – Generates a glossary from the UML export (XML/XMI).</p>
+<p><code>generate-glossary</code> – Generates an HTML glossary from the UML export (XML/XMI).</p>
 <div class="ulist">
 <ul>
 <li>
@@ -279,6 +279,33 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 </li>
 <li>
 <p><code>OUTPUT_GLOSSARY_PATH</code> – Path to the output folder.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>generate-asciidoc-glossary</code> – Generates an AsciiDoc glossary from the UML export (XML/XMI), optionally creating the model data JSON file if it is not provided.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the UML XMI model file required for generating the ReSpec data JSON file (used only if <code>MODEL_DATA_JSON_PATH</code> is not provided).</p>
+</li>
+<li>
+<p><code>MODEL_DATA_JSON_PATH</code> – (Optional) Path to the ReSpec data JSON file.
+If omitted, the file will be generated automatically.</p>
+</li>
+<li>
+<p><code>OUTPUT_GLOSSARY_PATH</code> – Output directory for the glossary file.</p>
+</li>
+<li>
+<p><code>OUTPUT_FOLDER_PATH</code> – (Optional) Directory where the generated ReSpec data JSON file should be stored (used only if <code>MODEL_DATA_JSON_PATH</code> is not provided). If not set, then the default directory is used.</p>
 </li>
 </ul>
 </div>
@@ -516,7 +543,7 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 </div>
 </li>
 <li>
-<p><code>merge-owl-shacl</code> – Merges an OWL ontology file with a SHACL shapes file into a combined output TTL file. Useful to extend diffing coverage for with selected properties from the SHACL shapes file.</p>
+<p><code>merge-owl-shacl</code> – Merges an OWL ontology file with a SHACL shapes file into a combined output TTL file. Useful to extend the final report with selected properties related to constraint information, which is not typically available or available only inconsistently from lightweight ontologies. At least the new version being compared must be merged, if not both.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -547,10 +574,10 @@ make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOL
 <div class="ulist">
 <ul>
 <li>
-<p><code>RDF_DIFF_FILE1</code> – Path to the first RDF file (default: <code>test/diffing-files/ePO_core-4.1.0.ttl</code>).</p>
+<p><code>RDF_DIFF_FILE1</code> – Path to the first (old version) RDF file (default: <code>test/diffing-files/ePO_core-4.1.0.ttl</code>).</p>
 </li>
 <li>
-<p><code>RDF_DIFF_FILE2</code> – Path to the second RDF file (default: <code>test/diffing-files/ePO_core-4.2.0.ttl</code>).</p>
+<p><code>RDF_DIFF_FILE2</code> – Path to the second (new version) RDF file (default: <code>test/diffing-files/ePO_core-4.2.0.ttl</code>).</p>
 </li>
 <li>
 <p><code>RDF_DIFF_OUTDIR</code> – Output directory for the diff results (default: <code>${OUTPUT_FOLDER_PATH}</code>).</p>
@@ -940,6 +967,17 @@ model2owl.</p>
 </div>
 </li>
 <li>
+<p><code>make generate-asciidoc-glossary</code> – Generates an AsciiDoc glossary of terms extracted from the UML model.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated File:
+<strong><code>&lt;input-file&gt;_glossary.adoc</code></strong> – Glossary in AsciiDoc format.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><code>make generate-convention-report</code> – Generates a compliance report from the UML model in HTML format, validating it against the conventions.</p>
 <div class="ulist">
 <ul>
@@ -978,7 +1016,7 @@ model2owl.</p>
 <ul>
 <li>
 <p>Generated File:
-<strong><code>&lt;output-dir&gt;/&lt;file-name&gt;.ttl</code></strong> – An RDF file combining content of provided OWL core and SHACL shapes files.</p>
+<strong><code>&lt;output-dir&gt;/&lt;file-name&gt;.ttl</code></strong> – An RDF file combining content of provided OWL core and SHACL shapes artefacts, resulting in an OWL-SHACL RDF file (embedded SHACL shapes).</p>
 </li>
 </ul>
 </div>
