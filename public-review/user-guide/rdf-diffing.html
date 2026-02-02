@@ -302,6 +302,11 @@ revision with the one committed in another revision or even another repository.<
 <p>Results are committed to the repository (the same branch where the workflow
 was triggered), saved in <code>diff-reports</code> directory.</p>
 </li>
+<li>
+<p>Alternatively, diff reports can be generated between the current version and
+past versions without modifying files. In this case, the diff configuration is
+specified per run via workflow dispatch.</p>
+</li>
 </ol>
 </div>
 <div class="paragraph">
@@ -313,7 +318,7 @@ as described in the <a href="configuration-file.html#sec:rdf-diffing-configurati
 <div class="paragraph">
 <p>The workflow is called automatically by the transform workflow after generating
 new OWL/SHACL artefacts. It can also be triggered manually via
-<a href="https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/manually-running-a-workflow">workflow dispatch</a>.</p>
+<a href="https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow#running-a-workflow">workflow dispatch</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -330,7 +335,7 @@ been merged to the default branch of the repository (as per
 </table>
 </div>
 <div class="sect2">
-<h3 id="_multiple_modules_processing"><a class="anchor" href="#_multiple_modules_processing"></a>Multiple modules processing</h3>
+<h3 id="_multiple_ontology_modules_processing"><a class="anchor" href="#_multiple_ontology_modules_processing"></a>Multiple ontology modules processing</h3>
 <div class="paragraph">
 <p>The workflow can process multiple modules in a single run. They can be specified
 explicitly via the <code>modules</code> parameter as a comma-separated list, or auto-detected
@@ -380,13 +385,13 @@ GitHub Actions UI:</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>old_ontology_dir</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for old OWL/SHACL files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for old OWL/SHACL files. Expected to contain subdirectories for ontology modules.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>output/release</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>new_ontology_dir</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for new OWL/SHACL files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for new OWL/SHACL files. Expected to contain subdirectories for ontology modules.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
 </tr>

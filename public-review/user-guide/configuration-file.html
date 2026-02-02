@@ -1417,13 +1417,14 @@ ensuring that each generated artefact contains the necessary information. The de
 <div class="sect2">
 <h3 id="sec:rdf-diffing-configuration"><a class="anchor" href="#sec:rdf-diffing-configuration"></a><strong>RDF diffing configuration</strong></h3>
 <div class="paragraph">
-<p>This section defines parameters that control <strong>the automated diffing process</strong> implemented in a Github workflow of model2owl-boilerplate project. It&#8217;s relevant only for the online use of the diffing feature.</p>
+<p>This section defines parameters that control <strong>the automated diffing process</strong> implemented in a Github workflow of model2owl-boilerplate project. It&#8217;s relevant only for the online use of the diffing feature. For details on the workflow options available for manual runs, see the <a href="rdf-diffing.html#_manual_workflow_dispatch">Manual workflow dispatch</a> section.</p>
 </div>
 <div class="paragraph">
 <p>The workflow compares two versions of a model (as described on the <a href="rdf-diffing.html">Diffing</a> page).
 Configuration is managed through the <code>diff-config.env</code> file in the <code>.github/workflows</code> directory.
 Values can also be set as <a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables#creating-configuration-variables-for-a-repository">Github Variables</a> or passed as workflow inputs.
-Priority: workflow inputs &gt; config file &gt; repository variables &gt; defaults.</p>
+Priority: workflow inputs &gt; config file &gt; repository variables &gt; defaults.
+The table below outlines the available configuration options, which may be defined either in the configuration file or as repository variables. An equivalent set of parameters can also be provided when manually triggering a workflow, as described in the <a href="rdf-diffing.html#_manual_workflow_dispatch">Manual workflow dispatch</a> section.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1456,19 +1457,19 @@ Priority: workflow inputs &gt; config file &gt; repository variables &gt; defaul
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>OLD_ONTOLOGY_DIR</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for old OWL/SHACL files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for old OWL/SHACL files. The directory is expected to contain one or more subdirectories for ontology modules.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>NEW_ONTOLOGY_DIR</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for new OWL/SHACL files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for new OWL/SHACL files. The directory is expected to contain one or more subdirectories for ontology modules.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>MODULES</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated module names to diff (empty = auto-detect).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated module names to diff. If left empty, all modules discovered under NEW_ONTOLOGY_DIR will be processed.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">(empty)</p></td>
 </tr>
 <tr>
