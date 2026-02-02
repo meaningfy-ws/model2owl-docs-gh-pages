@@ -1421,7 +1421,9 @@ ensuring that each generated artefact contains the necessary information. The de
 </div>
 <div class="paragraph">
 <p>The workflow compares two versions of a model (as described on the <a href="rdf-diffing.html">Diffing</a> page).
-The following table describes configuration parameters that can be specified for the workflow as <a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables#creating-configuration-variables-for-a-repository">Github Variables</a> in the <a href="https://github.com/OP-TED/model2owl-boilerplate/settings/variables/actions">Github project</a>.</p>
+Configuration is managed through the <code>diff-config.env</code> file in the <code>.github/workflows</code> directory.
+Values can also be set as <a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables#creating-configuration-variables-for-a-repository">Github Variables</a> or passed as workflow inputs.
+Priority: workflow inputs &gt; config file &gt; repository variables &gt; defaults.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1442,38 +1444,32 @@ The following table describes configuration parameters that can be specified for
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>REVISION_TO_COMPARE_COMMIT_ID</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Specification of a Git revision (branch, tag or SHA)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>release/5.0.0</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) Git revision to compare against (branch, tag or SHA)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>develop</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>REVISION_TO_COMPARE_REPO_URL</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) URL of an external public Git repository.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://github.com/OP-TED/ePO.git" class="bare">https://github.com/OP-TED/ePO.git</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Optional) URL of an external public Git repository for the old version.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(empty)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OLD_ONTOLOGY_FILE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OLD_ONTOLOGY_DIR</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the old version; a path to an OWL core file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/ ePO_core/owl_ontology/ePO_core.ttl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for old OWL/SHACL files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OLD_SHACL_FILE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NEW_ONTOLOGY_DIR</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the old version; a path to a SHACL shapes file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/ ePO_core/shacl_shapes/ePO_core_shapes.ttl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for new OWL/SHACL files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NEW_ONTOLOGY_FILE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MODULES</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the new version; a path to an OWL core file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/demo_ontology/ owl_ontology/demo_ontology_CM.ttl</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>NEW_SHACL_FILE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the new version; a path to a SHACL shapes file.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation/demo_ontology/ shacl_shapes/demo_ontology_CM_shapes.ttl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated module names to diff (empty = auto-detect).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(empty)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>RDF_DIFF_OUTDIR</code></p></td>
@@ -1481,27 +1477,21 @@ The following table describes configuration parameters that can be specified for
 <td class="tableblock halign-left valign-top"><p class="tableblock">Output directory for generated diff reports.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>diff-reports</code></p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>RDF_DIFF_AP</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier of an application profile used. No need to change it unless following a customized diffing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>owl-core-en-only</code></p></td>
-</tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Note that the paths specified in <code>OLD_ONTOLOGY_FILE</code> and <code>OLD_SHACL_FILE</code> are resolved according to values of <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> parameters. The following cases are supported by the workflow:</p>
+<p>File paths are derived automatically from the module name and directory configuration (e.g., <code>&lt;OLD_ONTOLOGY_DIR&gt;/&lt;module&gt;/owl_ontology/&lt;module&gt;.ttl</code>). The old version is resolved based on <code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code>:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> specified: an RDF file is fetched from an external Git repository, following the specified revision and path.</p>
+<p>Both specified: files are fetched from the external repository at the given revision.</p>
 </li>
 <li>
-<p><code>REVISION_TO_COMPARE_COMMIT_ID</code> specified: an RDF file is fetched from the same Git repository, following the specified revision and path.</p>
+<p>Only revision specified: files are fetched from the same repository at the given revision.</p>
 </li>
 <li>
-<p><code>REVISION_TO_COMPARE_COMMIT_ID</code> and <code>REVISION_TO_COMPARE_REPO_URL</code> not specified: an RDF file is fetched from the same Git repository, following the specified path. The current revision (the one that the workflow runs on) is used.</p>
+<p>Neither specified: files are fetched from the default revision (<code>develop</code>).</p>
 </li>
 </ul>
 </div>

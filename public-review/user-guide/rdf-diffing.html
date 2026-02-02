@@ -300,30 +300,120 @@ revision with the one committed in another revision or even another repository.<
 </li>
 <li>
 <p>Results are committed to the repository (the same branch where the workflow
-was triggered), saved in <code>diff-report</code> directory.</p>
+was triggered), saved in <code>diff-reports</code> directory.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
 <p>The workflow uses some default configuration for demonstration purposes.
-The configuration can be adjusted using
+The configuration can be adjusted using the <code>diff-config.env</code> file or
 <a href="https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables#creating-configuration-variables-for-a-repository">GitHub Variables</a>
 as described in the <a href="configuration-file.html#sec:rdf-diffing-configuration">RDF diffing configuration</a> section.</p>
 </div>
 <div class="paragraph">
-<p>The workflow is triggered automatically on changes to the RDF files: OWL core or
-SHACL shapes. The files are regenerated every time the base workflow for RDF
-generation runs.</p>
+<p>The workflow is called automatically by the transform workflow after generating
+new OWL/SHACL artefacts. It can also be triggered manually via
+<a href="https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/manually-running-a-workflow">workflow dispatch</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The workflow dispatch option is only available after the workflow file has
+been merged to the default branch of the repository (as per
+<a href="https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow#configuring-a-workflow-to-run-manually">GitHub Actions specifications</a>).
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_multiple_modules_processing"><a class="anchor" href="#_multiple_modules_processing"></a>Multiple modules processing</h3>
+<div class="paragraph">
+<p>The workflow can process multiple modules in a single run. They can be specified
+explicitly via the <code>modules</code> parameter as a comma-separated list, or auto-detected
+from the repository structure. Each is processed in parallel, with separate reports
+stored in dedicated subdirectories (e.g., <code>diff-reports/epo_core/</code>, <code>diff-reports/epo_cat/</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_manual_workflow_dispatch"><a class="anchor" href="#_manual_workflow_dispatch"></a>Manual workflow dispatch</h3>
+<div class="paragraph">
+<p>When triggering the workflow manually, the following options are available in the
+GitHub Actions UI:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Option</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>modules</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of module names to compare. Leave empty to process all modules.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(empty)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>epo_core,epo_cat</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revision_to_compare</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Git revision (branch, tag, or commit SHA) to compare against.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>develop</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>release/5.0.0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revision_repo_url</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of an external public repository for the old version. Leave empty to compare within the same repository.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(empty)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://github.com/OP-TED/ePO" class="bare">https://github.com/OP-TED/ePO</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>old_ontology_dir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for old OWL/SHACL files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>output/release</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>new_ontology_dir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root directory for new OWL/SHACL files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>implementation</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>output_dir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Output directory for generated diff reports.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>diff-reports</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>diff-reports/v5.1</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Generated files are committed to the repository. The commit message includes
+the number of modules processed and the run number, following conventional
+commits format (e.g., <code>chore(ci): diff 2 module(s) #143 [skip ci]</code>).</p>
 </div>
 <div class="paragraph">
-<p>The RDF diffing workflow commits the generated files to the repository. The
-commit message includes details about the versions of the artefacts used, which
-makes it possible to determine the input files associated with a particular
-report.</p>
+<p>Each run produces a summary visible in the GitHub Actions page, showing which
+modules were processed with links to the reports. Failed modules (e.g., no
+preexisting files to compare to) are noted accordingly. For more information on
+navigating workflow runs, see
+<a href="https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/using-the-visualization-graph">Using the visualization graph</a>.</p>
 </div>
 <div class="paragraph">
 <p>Further details about the workflow can be found
 <a href="https://github.com/OP-TED/model2owl-boilerplate/blob/main/README.md">in the project&#8217;s README</a>.</p>
+</div>
 </div>
 </div>
 </div>
