@@ -56,7 +56,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="conv-classes.html">Classes</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="conv-attributes.html">Class Attributes</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -77,7 +77,7 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="unsupported-uml-constructs.html">Unsupported UML Constructs</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -168,10 +168,10 @@
   <ul>
     <li><a href="../index.html">model2owl Documentation</a></li>
     <li><a href="conceptual-model-conventions.html">UML Model Conventions</a></li>
-    <li><a href="conv-attributes.html">Class Attributes</a></li>
+    <li><a href="unsupported-uml-constructs.html">Unsupported UML Constructs</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/meaningfy-ws/model2owl-docs-gh-pages/edit/main/docs/modules/ROOT/pages/uml/conv-attributes.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/meaningfy-ws/model2owl-docs-gh-pages/edit/main/docs/modules/ROOT/pages/uml/unsupported-uml-constructs.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -179,122 +179,91 @@
 </aside>
 <article class="doc">
 <div class="sect1">
-<h2 id="_conventions_on_attributes_of_umlclass_elements"><a class="anchor" href="#_conventions_on_attributes_of_umlclass_elements"></a>Conventions on Attributes of uml:Class elements</h2>
+<h2 id="sec:unsupported-uml-constructs"><a class="anchor" href="#sec:unsupported-uml-constructs"></a>Unsupported UML Constructs</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>model2owl transforms a subset of UML class-diagram constructs into OWL
+ontologies and SHACL shapes. UML offers several modelling constructs whose
+semantics either have no direct counterpart in the target formalisms or are not
+supported. This section lists those constructs, explains what each one is,
+states what model2owl does with it, and, where possible, proposes an alternative
+modelling approach.</p>
+</div>
+<div class="paragraph">
+<p>Modellers should avoid relying on these constructs to carry semantics that they
+expect to appear in the generated artefacts. Where a richer relationship is
+required, it should be expressed with a supported construct (see the
+<a href="conv-connectors.html#sec:connectors" class="xref page">Connector conventions</a>) or captured
+out-of-band.</p>
+</div>
 <div class="sect2">
-<h3 id="sec:attributes"><a class="anchor" href="#sec:attributes"></a>Conventional recommendations on Attributes</h3>
-<table id="rule:attributes-names-with-verb" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute names</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier:</strong> rule:attributes-names-with-verb</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-It is recommended to use a verb in the attribute name, such as "has-" or "is-".</p></td>
-</tr>
-</tbody>
-</table>
+<h3 id="sec:unsupported-nary-associations"><a class="anchor" href="#sec:unsupported-nary-associations"></a>N-ary (ternary and higher-arity) associations</h3>
 <div class="paragraph">
-<p><strong>Description:</strong></p>
+<p>An n-ary association is a single association that relates three or more
+classifiers at once (a ternary association relates three, and so on), typically
+drawn as a diamond connecting all participating ends. Only binary associations,
+those relating exactly two classes, are transformed. N-ary associations (arity
+greater than two) are ignored in the generated RDF artefacts: no object
+properties, classes, or shapes are produced for them.</p>
 </div>
 <div class="paragraph">
-<p>When creating attribute names, it is conventional to use simple nouns such as "name", "weight", "colour". Attributes are a special type of relations that describe an entity in terms of its qualities. And so, to be consistent with the above convention and in order to increase the clarity, it is recommended to employ the prefix "has-" for each attribute, even if it does not add much to the term&#8217;s meaning. So, it is preferred to use terms such as "hasName", "hasWeight" and "hasColour".</p>
-</div>
-<div class="paragraph">
-<p>It is recommended to use simple nouns for attribute names prepended with the verb "has-".</p>
-</div>
-<div class="paragraph">
-<p>It is recommended to avoid duplicate attribute names across multiple classes. Unless, by design, attributes with the same name are shared across multiple classes.</p>
-</div>
-<table id="rule:attributes-multiplicity" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute multiplicity</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier:</strong> rule:attributes-multiplicity</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Attributes shall be assigned cardinality specifications contextualised to the class carrying them.</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
-</div>
-<div class="paragraph">
-<p>The attribute multiplicity should be specified indicating the minimum and maximum cardinality. The default [1] multiplicity shall be interpreted as unspecified, and expressed as [0..*] in the OWL model.</p>
-</div>
-<div class="paragraph">
-<p>In special cases, a list of custom default multiplicities is defined for the transformation script. That means that some data types or classes that are used as attribute types are paired with a default multiplicity, for example "1..1", "0..1", "2..2".</p>
+<p>To represent an n-ary relationship, reify it: introduce an intermediate class
+that stands for the relationship and connect it to each participant with a
+binary association. An association class cannot be used as an alternative for
+this, since association classes are themselves not supported (see
+<a href="#sec:unsupported-association-classes">Association classes</a>). See the supported connector set in
+<a href="conv-general.html#rule:gen-model-connectors" class="xref page">Supported UML connectors</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sec:attributes-class"><a class="anchor" href="#sec:attributes-class"></a>uml:Class attributes</h3>
-<table id="rule:attributes-datatypes" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute datatypes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier:</strong> rule:attributes-datatypes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-uml:Attribute shall be defined with generally accepted primitive datatypes.</p></td>
-</tr>
-</tbody>
-</table>
+<h3 id="sec:unsupported-qualified-associations"><a class="anchor" href="#sec:unsupported-qualified-associations"></a>Qualified associations</h3>
 <div class="paragraph">
-<p><strong>Description:</strong></p>
+<p>A qualified association attaches a qualifier (one or more attributes) to an
+association end, partitioning the set of associated instances by the qualifier
+value. model2owl does not represent the qualifier: the association is not
+transformed as qualified, and the qualifier carries no meaning in the generated
+artefacts. Model the relationship as a plain binary association, and express any
+key-like semantics through an explicit attribute or a dedicated class.</p>
 </div>
-<div class="paragraph">
-<p>Each uml:Attribute must have a name and an attribute type. uml:Attribute is mostly transformed into owl:DataProperty and in some controlled cases into owl:ObjectProperty. High preference shall be given to using OWL 2 compliant XSD [<a href="../references.html#ref:xsd" class="xref page">xsd</a>] and RDF [<a href="../references.html#ref:rdf" class="xref page">rdf</a>] standard datatypes. [<a href="conv-datatypes.html#rule:datatypes-primitive" class="xref page">See convention on Primitive Data types</a>]</p>
 </div>
+<div class="sect2">
+<h3 id="sec:unsupported-association-classes"><a class="anchor" href="#sec:unsupported-association-classes"></a>Association classes</h3>
 <div class="paragraph">
-<p>In cases when a property needs to be defined as ranging on an unknown controlled list or authority table constitute a special case. They can be expressed as uml:Attribute with the datatype <code>skos:Concept</code>. These attributes are transformed into owl:ObjectProperty in a manner similarly to uml:Association.</p>
+<p>An association class is a UML element that is at once an association and a class:
+it connects classes like an association and also carries its own attributes like
+a class. model2owl does not support association classes: the combined
+association-and-class semantics are not generated. To attach attributes or
+further relationships to a relationship, reify it as an ordinary class connected
+to each participant with a binary association.</p>
 </div>
-<div class="paragraph">
-<p>An attribute may contain an alias, used as an alternative label. It can be specified via uml:Tags. [<a href="conv-general.html#rule:gen-tags" class="xref page">See convention on uml:Tags</a>]</p>
 </div>
-<table id="rule:attributes-reuse" class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #a8c6f7;"><p class="tableblock"> <strong>Title:</strong> Attribute name reuse</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Identifier:</strong> rule:attributes-reuse</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
-Attribute names can be reused only as attributes in other classes, not as relations.</p></td>
-</tr>
-</tbody>
-</table>
+<div class="sect2">
+<h3 id="sec:unsupported-aggregation-composition"><a class="anchor" href="#sec:unsupported-aggregation-composition"></a>Aggregation and composition associations</h3>
 <div class="paragraph">
-<p><strong>Description:</strong></p>
+<p>UML distinguishes plain associations from shared aggregation (hollow diamond) and
+composite aggregation, also called composition (filled diamond), which add
+part-whole semantics, and, for composition, lifecycle dependency of the part on
+the whole. model2owl treats both shared and composite aggregation as a plain
+association: the part-whole semantics are not generated (no distinguished
+part-of/has-part axioms, no lifecycle constraints). If part-whole meaning must be
+conveyed, encode it explicitly through suitably named and typed object properties
+rather than relying on the aggregation notation.</p>
 </div>
-<div class="paragraph">
-<p>It is mandatory to avoid using the same name in an attribute and in a relation, unless an additional rule that handles intentional exceptions exists.</p>
 </div>
+<div class="sect2">
+<h3 id="sec:unsupported-covering-constraints"><a class="anchor" href="#sec:unsupported-covering-constraints"></a>Covering and completeness constraints on generalization sets</h3>
 <div class="paragraph">
-<p>The definition and datatype (and in most cases also the multiplicity) of the attribute should be the same in all classes where it is reused.</p>
+<p>A generalization set groups several generalizations sharing one superclass and
+may carry constraints. The <code>{complete}</code> (covering) constraint asserts that every
+instance of the superclass belongs to at least one of the listed subclasses,
+while the <code>{disjoint}</code> constraint asserts that no instance belongs to more than
+one. model2owl does not transform these generalization-set constraints:
+<code>{complete}</code>/covering constraints are not turned into OWL covering axioms
+(<code>owl:unionOf</code> / covering <code>owl:equivalentClass</code> axioms over the subclasses), and
+<code>{disjoint}</code> constraints are not turned into <code>owl:disjointWith</code> /
+<code>owl:AllDisjointClasses</code> axioms. Covering (completeness) and disjointness are
+independent constraints: each may hold without the other. If either axiom is
+required in the ontology, it must be added by other means.</p>
 </div>
 </div>
 </div>
