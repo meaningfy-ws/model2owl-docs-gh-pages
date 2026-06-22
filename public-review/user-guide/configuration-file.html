@@ -871,15 +871,45 @@ of an element.</strong> Model2owl interprets these tags to determine element sta
 </div>
 </div>
 <div class="sect2">
-<h3 id="_annotating_shacl_shapes_with_ontology_uri"><a class="anchor" href="#_annotating_shacl_shapes_with_ontology_uri"></a><strong>Annotating SHACL shapes with ontology URI</strong></h3>
+<h3 id="sec:isdefinedby-annotation"><a class="anchor" href="#sec:isdefinedby-annotation"></a><strong>Annotating concepts with the ontology URI</strong></h3>
 <div class="paragraph">
-<p>Each instance of <code>sh:NodeShape</code> and <code>sh:PropertyShape</code> is annotated with the URI
-of the ontology in which it is defined. This typically refers to the ontology
-contained within the same SHACL shapes artefact. The <code>rdfs:isDefinedBy</code> property
-is used to identify the source ontology of each shape. It can be disabled by
-setting the <code>annotateShaclConceptsWithOntology</code> configuration parameter to
-<code>false()</code>.</p>
+<p>Each generated concept is annotated with the URI of the ontology in which it is
+defined, using the <code>rdfs:isDefinedBy</code> property (transformation rules
+<a href="../transformation/transf-rules4.html#rule:element-source-core" class="xref page">T.08</a> for the OWL
+artefacts and <a href="../transformation/transf-rules4.html#rule:element-source-ds" class="xref page">T.09</a>
+for the SHACL shapes). Two independent flags control this behaviour; set either to
+<code>false()</code> to suppress the corresponding annotation.</p>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter Name</th>
+<th class="tableblock halign-left valign-top">Data Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>annotateDefinedConceptsWithOntology</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>true</code>, every concept defined in the OWL <strong>core/restrictions</strong> artefacts is annotated with <code>rdfs:isDefinedBy</code> pointing at the ontology IRI.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>annotateShaclConceptsWithOntology</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If <code>true</code>, every <code>sh:NodeShape</code>/<code>sh:PropertyShape</code> in the <strong>SHACL shapes</strong> artefact is annotated with <code>rdfs:isDefinedBy</code> pointing at the shapes ontology.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_comments_generation"><a class="anchor" href="#_comments_generation"></a><strong>Comments generation</strong></h3>
@@ -1055,6 +1085,36 @@ allow users to <strong>control and customize which information is displayed and 
 <div class="paragraph">
 <p>This section defines metadata parameters used in the generation of <strong>OWL Core, OWL Restrictions, SHACL Shapes, convention report, and ReSpec documentation</strong> artefacts. Metadata plays a crucial role in <strong>identifying, describing, and managing ontology components</strong>,
 ensuring that each generated artefact contains the necessary information. The described metadata properties should be defined in the <strong>metadata.json JSON file</strong> that belongs to the set of configuration files. An exemplary metadata JSON file is included in the model2owl repository and can be accessed <a href="https://github.com/OP-TED/model2owl/blob/develop/test/ePO-default-config/metadata.json">here</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All metadata properties listed below are <strong>optional</strong>. If a property is omitted, or left blank, model2owl does not fail: for the OWL Core, OWL Restrictions, SHACL and convention-report artefacts the corresponding annotation or field is simply left out, and in the ReSpec documentation it renders empty.</p>
+</div>
+<div class="paragraph">
+<p>A few properties are nonetheless <strong>recommended</strong>, because omitting them degrades the result:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>versionInfo</code> — drives <code>owl:versionInfo</code> and the <code>owl:versionIRI</code>;</p>
+</li>
+<li>
+<p><code>preferredNamespaceUri</code> and <code>preferredNamespacePrefix</code> — used to build correct term URIs and compact (prefixed) names;</p>
+</li>
+<li>
+<p><code>ontologyTitleCore</code>, <code>ontologyTitleRestrictions</code>, <code>ontologyTitleShapes</code> — the artefact titles.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>

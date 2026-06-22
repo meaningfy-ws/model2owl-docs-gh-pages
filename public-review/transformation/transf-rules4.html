@@ -704,6 +704,23 @@ The generation of annotations from tags could be controlled by a flag in the con
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This annotation is optional: it is controlled by the <code>annotateDefinedConceptsWithOntology</code>
+configuration parameter (default <code>true</code>). Set it to <code>false()</code> to suppress
+<code>rdfs:isDefinedBy</code> in the OWL artefacts. See
+<a href="../user-guide/configuration-file.html#sec:isdefinedby-annotation" class="xref page">Annotating concepts with the ontology URI</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div id="rule:element-source-ds" class="exampleblock">
 <div class="title">Rule T.09. Source specification&#8201;&#8212;&#8201;in data shape layer</div>
 <div class="content">
@@ -760,6 +777,23 @@ shape:ClassName-PropertyName
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This annotation is optional: it is controlled by the <code>annotateShaclConceptsWithOntology</code>
+configuration parameter (default <code>true</code>). Set it to <code>false()</code> to suppress
+<code>rdfs:isDefinedBy</code> in the SHACL shapes. See
+<a href="../user-guide/configuration-file.html#sec:isdefinedby-annotation" class="xref page">Annotating concepts with the ontology URI</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
