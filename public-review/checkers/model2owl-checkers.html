@@ -580,13 +580,6 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock">The attribute $value$ is has different multiplicities in reuse contexts. When a property is reused in multiple contexts, the multiplicity is expected to be the same. Please check the nomenclature above for a summary.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">compare multiplicity values for a group of class attributes with the same name</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>class-attributes-reuse-data-types-3</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Data-types of class attributes with same name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The attribute $value$ has different datatypes in reuse contexts. When a property is reused in multiple contexts, the data-type is expected to be the same. In this case, multiple data-types are found: $Data-types</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">compare data-types for a group of class attributes with the same name</p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -1242,7 +1235,7 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-connector-and-missing-class-generalisation-9</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">connector generalisation declared incorrectly (missing class generalisation, or wrong / inverse object property)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The generalisation between the connectors $connector1$ and $connector2$ is declared incorrectly: their source and target must be compatible, or the generalisation is declared on the wrong (inverse) object property</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The generalisation between the connectors $connector1$ and $connector2$ is declared incorrectly: their same-side ends (source with source, target with target) must each be attached to the same class or to two classes linked by a class generalisation. This usually indicates an inconsistent end orientation of the two associations (which class sits at the source end and which at the target end, independent of navigability), which declares the generalisation on the inverse object property and, under reasoning, produces unintended subclass inferences.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">perform the two actions for target side of the two connectors and additionally for source side only if the connectors are bidirectional: 1) get a pair of classes linked to a connector end of the considered side (either source or target) for the first and second connectors; 2) check that either both references point out to the same class or a generalisation connector between the two classes exists</p></td>
 </tr>
 <tr>
