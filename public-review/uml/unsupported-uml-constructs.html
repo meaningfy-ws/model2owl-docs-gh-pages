@@ -220,10 +220,11 @@ this, since association classes are themselves not supported (see
 <div class="paragraph">
 <p>A qualified association attaches a qualifier (one or more attributes) to an
 association end, partitioning the set of associated instances by the qualifier
-value. Model2owl does not represent the qualifier: the association is not
-transformed as qualified, and the qualifier carries no meaning in the generated
-artefacts. Model the relationship as a plain binary association, and express any
-key-like semantics through an explicit attribute or a dedicated class.</p>
+value. Model2owl does not represent the qualifier, but it <strong>does</strong> transform the
+underlying binary association: the ordinary (unqualified) object property is
+generated as usual, and only the qualifier is dropped — it carries no meaning in
+the generated artefacts. Model the relationship as a plain binary association, and
+express any key-like semantics through an explicit attribute or a dedicated class.</p>
 </div>
 </div>
 <div class="sect2">
@@ -232,9 +233,12 @@ key-like semantics through an explicit attribute or a dedicated class.</p>
 <p>An association class is a UML element that is at once an association and a class:
 it connects classes like an association and also carries its own attributes like
 a class. Model2owl does not support association classes: the combined
-association-and-class semantics are not generated. To attach attributes or
-further relationships to a relationship, reify it as an ordinary class connected
-to each participant with a binary association.</p>
+association-and-class semantics are not generated. Specifically, the association
+class itself, its attributes (which would otherwise become data or object
+properties), and any association from another class to it are all omitted from
+every artefact. To attach attributes or further relationships to a relationship,
+reify it as an ordinary class connected to each participant with a binary
+association.</p>
 </div>
 </div>
 <div class="sect2">
@@ -243,11 +247,12 @@ to each participant with a binary association.</p>
 <p>UML distinguishes plain associations from shared aggregation (hollow diamond) and
 composite aggregation, also called composition (filled diamond), which add
 part-whole semantics, and, for composition, lifecycle dependency of the part on
-the whole. Model2owl treats both shared and composite aggregation as a plain
-association: the part-whole semantics are not generated (no distinguished
-part-of/has-part axioms, no lifecycle constraints). If part-whole meaning must be
-conveyed, encode it explicitly through suitably named and typed object properties
-rather than relying on the aggregation notation.</p>
+the whole. Model2owl does not transform aggregation or composition connectors at
+all: an aggregation or composition connector produces <strong>nothing</strong> in the generated
+artefacts — neither a plain association nor any part-whole or lifecycle axiom. If a
+relationship must appear in the output, model it as a plain binary association
+(and, if part-whole meaning matters, convey it through suitably named and typed
+object properties) rather than relying on the aggregation notation.</p>
 </div>
 </div>
 <div class="sect2">
@@ -274,6 +279,17 @@ generalization it generates only an <code>rdfs:subClassOf</code> axiom.</p>
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec:unsupported-id-property-modifier"><a class="anchor" href="#sec:unsupported-id-property-modifier"></a>The <code>{id}</code> property modifier</h3>
+<div class="paragraph">
+<p>The <code>{id}</code> modifier marks an attribute as part of the identity of its owning
+class, indicating that its value distinguishes instances. Model2owl does not
+transform the <code>{id}</code> modifier: the attribute itself is still generated as an
+ordinary data (or object) property, but no identity, uniqueness, or key axiom
+(such as <code>owl:hasKey</code>) is produced from it, so the <code>{id}</code> marking carries no
+meaning in the generated artefacts.</p>
 </div>
 </div>
 </div>

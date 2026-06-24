@@ -255,6 +255,20 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock">The prefixes $[list of undefined prefixes] are not defined. All used namespaces shall be defined ("prefix" = "base URI"), including the default one (""="base URI").</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check that all used prefixes are defined</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-modifier-type-4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UML modifiers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model2owl does not transform UML attribute or generalisation-set modifiers. The following were found in the model and carry no meaning in the generated artefacts: $[list of modifiers]. For guidance, see the documentation on unsupported UML constructs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check which of the modifiers {id}, {complete}, {disjoint} occur at least once in the model (presence only)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-construct-type-5</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UML constructs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model2owl does not transform the following UML constructs found in the model: $[list of constructs]. For guidance, see the documentation on unsupported UML constructs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check which of association class, qualified association occur at least once in the model (presence only)</p></td>
+</tr>
 </tbody>
 </table>
 </div>
