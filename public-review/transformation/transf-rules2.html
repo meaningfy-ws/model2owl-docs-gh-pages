@@ -302,8 +302,15 @@
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disjoint generalization set</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:disjoint-classes-rc">Rule R.21</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Realisation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:realisation-class-core">Rule R.21</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#rule:realisation-class-core">Rule R.22</a></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -1135,7 +1142,7 @@ shape:ClassName-relationName a sh:PropertyShape ;
 <div class="title">Figure 4. Visual representation of UML generalisation (on the left) and OWL subclass relation (on the right)</div>
 </div>
 <div class="paragraph">
-<p>A UML generalisation set [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>] groups generalisations. Subclasses in a generalization set are, by default, incomplete and can overlap. Generalization set properties are not supported.</p>
+<p>A UML generalisation set [<a href="../references.html#ref:uml2.5" class="xref page">uml2.5</a>] groups generalisations. Subclasses in a generalization set are, by default, incomplete and can overlap. Of the generalization-set constraints, <code>{disjoint}</code> is transformed into OWL disjointness axioms (see <a href="#rule:disjoint-classes-rc">Rule R.21</a>); the <code>{complete}</code> (covering) constraint is not transformed.</p>
 </div>
 <div id="rule:generalisation-class-core" class="exampleblock">
 <div class="title">Rule R.17. Class generalisation&#8201;&#8212;&#8201;in core ontology layer</div>
@@ -1304,12 +1311,98 @@ Such a sub-property axiom is specified for the target side of association ends (
 </table>
 </div>
 <div class="sect2">
+<h3 id="sec:disjoint-generalisation"><a class="anchor" href="#sec:disjoint-generalisation"></a>Disjoint generalization sets</h3>
+<div class="paragraph">
+<p>A UML generalization set may carry a <code>{disjoint}</code> constraint (<code>isDisjoint = true</code>),
+asserting that no instance of the shared superclass belongs to more than one of the
+listed subclasses. Model2owl transforms this constraint into OWL disjointness axioms.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Only members of the specific generalization set are affected; if the
+superclass has additional subclasses outside this set they are unaffected. This
+supports <em>partial</em> disjointness between named subsets of siblings.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="rule:disjoint-classes-rc" class="exampleblock">
+<div class="title">Rule R.21. Disjoint classes from a <code>{disjoint}</code> generalization set&#8201;&#8212;&#8201;in reasoning layer</div>
+<div class="content">
+<div class="paragraph">
+<p>For a generalization set marked <code>{disjoint}</code> (<code>isDisjoint = true</code>):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>two member subclasses → generate an <code>owl:disjointWith</code> axiom on each subclass;</p>
+</li>
+<li>
+<p>three or more member subclasses → generate a single <code>owl:AllDisjointClasses</code> axiom
+listing all members.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 46. Disjoint pair (2 members) in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:SubClassA owl:disjointWith :SubClassB .</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 47. Disjoint set (3+ members) in Turtle syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">[] a owl:AllDisjointClasses ;
+   owl:members ( :SubClassA :SubClassB :SubClassC ) .</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="title">Listing 48. Disjoint pair (2 members) in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:Class rdf:about="http://base.onto.uri/SubClassA"&gt;
+    &lt;owl:disjointWith rdf:resource="http://base.onto.uri/SubClassB"/&gt;
+&lt;/owl:Class&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 49. Disjoint set (3+ members) in RDF/XML syntax</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:AllDisjointClasses&gt;
+    &lt;owl:members rdf:parseType="Collection"&gt;
+        &lt;owl:Class rdf:about="http://base.onto.uri/SubClassA"/&gt;
+        &lt;owl:Class rdf:about="http://base.onto.uri/SubClassB"/&gt;
+        &lt;owl:Class rdf:about="http://base.onto.uri/SubClassC"/&gt;
+    &lt;/owl:members&gt;
+&lt;/owl:AllDisjointClasses&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
 <h3 id="sec:realisation"><a class="anchor" href="#sec:realisation"></a>Realisation relations</h3>
 <div class="paragraph">
 <p>Realisation defines a relationship between an Object element and a UML Class or Enumeration element. At the moment we only provide transformation rules for UML Realization connectors that connect to UML Classes.</p>
 </div>
 <div id="rule:realisation-class-core" class="exampleblock">
-<div class="title">Rule R.21. Class realisation&#8201;&#8212;&#8201;in core ontology layer</div>
+<div class="title">Rule R.22. Class realisation&#8201;&#8212;&#8201;in core ontology layer</div>
 <div class="content">
 <div class="paragraph">
 <p>Declare an individual with a specified class as its type, for a UML Realization connector between a UML Object and a UML Class.</p>
@@ -1324,13 +1417,13 @@ Such a sub-property axiom is specified for the target side of association ends (
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 46. Individual declaration in Turtle syntax</div>
+<div class="title">Listing 50. Individual declaration in Turtle syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-Turtle hljs" data-lang="Turtle">:ObjectName a owl:NamedIndividual, :ClassName .</code></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="title">Listing 47. Individual declaration in RDF/XML syntax</div>
+<div class="title">Listing 51. Individual declaration in RDF/XML syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-XML hljs" data-lang="XML">&lt;owl:NamedIndividual rdf:about="http://base.onto.uri/ObjectName"&gt;
     &lt;rdf:type rdf:resource="http://base.onto.uri/ClassName"/&gt;

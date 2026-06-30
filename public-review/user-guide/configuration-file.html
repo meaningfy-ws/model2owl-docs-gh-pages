@@ -333,6 +333,12 @@ allowed characters for normalised strings, default delimiter in URIs, etc.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://data&#8230;&#8203;eu/a4g/ontology" class="bare">http://data&#8230;&#8203;eu/a4g/ontology</a></code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fullArtefactURI</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ontology IRI carried by the consolidated OWL-full artefact (see <code>generateOWLFull</code>). Defaults to the canonical <code>base-ontology-uri</code>, so the consolidated form is published as the ontology itself.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>$base-ontology-uri</code></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>defaultDelimiter</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The default delimiter to use when a namespace lacks one.</p></td>
@@ -676,6 +682,12 @@ warning when a model has classes but none qualifies as a main entity.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enables or disables the inclusion of reused concepts in the glossary. Applies to glossaries generated in both HTML and AsciiDoc formats.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>generateOWLFull</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables the optional consolidated OWL-full form (<code>make owl-full</code>): the OWL core and OWL restrictions artefacts are merged into a single self-contained ontology and the standalone outputs are dropped. See <a href="how-to-use.html#sec:owl-full" class="xref page">the OWL-full consolidated form</a> in the user guide.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>false</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1374,6 +1386,12 @@ ensuring that each generated artefact contains the necessary information. The de
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Some text</em></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyDescriptionFull</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of the consolidated OWL-full artefact. (dct:description) Optional; when omitted or blank it falls back to <code>ontologyDescriptionCore</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Some text</em></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyLabelCore</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines the label for the OWL Core ontology. (rdfs:label)</p></td>
@@ -1389,6 +1407,12 @@ ensuring that each generated artefact contains the necessary information. The de
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyLabelShapes</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines the label for the SHACL Shapes ontology. (rdfs:label)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Some text</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyLabelFull</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Label for the consolidated OWL-full artefact. (rdfs:label) Optional; when omitted or blank it falls back to <code>ontologyLabelCore</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>Some text</em></p></td>
 </tr>
 <tr>
@@ -1408,6 +1432,12 @@ ensuring that each generated artefact contains the necessary information. The de
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defines the title for the SHACL Shapes ontology. (dct:title)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePO Core shapes</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ontologyTitleFull</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title for the consolidated OWL-full artefact. (dct:title) Optional; when omitted or blank it falls back to <code>ontologyTitleCore</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ePO Core full</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>owners</code></p></td>

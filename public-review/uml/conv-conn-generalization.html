@@ -315,7 +315,10 @@ Equivalent classes can be represented by using stereotypes on the uml:Generaliza
 </td>
 <td class="content">
 <div class="paragraph">
-<p><strong>Covering and completeness constraints are not transformed.</strong> A <code>{complete}</code> (covering) constraint on a generalization set — asserting that every instance of the superclass belongs to at least one of its subclasses — is <strong>not</strong> turned into an OWL covering axiom. The same applies to the <code>{disjoint}</code> constraint. These are listed among the constructs that model2owl does not transform; see <a href="unsupported-uml-constructs.html#sec:unsupported-uml-constructs" class="xref page">Unsupported UML Constructs</a>.</p>
+<p><strong>Covering constraint is not transformed.</strong> A <code>{complete}</code> (covering) constraint on a generalization set — asserting that every instance of the superclass belongs to at least one of its subclasses — is <strong>not</strong> turned into an OWL covering axiom. This is listed among the constructs that model2owl does not transform; see <a href="unsupported-uml-constructs.html#sec:unsupported-covering-constraints" class="xref page">Unsupported UML Constructs</a>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>{disjoint}</code> constraint, however, <strong>is</strong> transformed: a generalization set marked <code>{disjoint}</code> causes model2owl to generate OWL disjointness axioms for its member subclasses (see <a href="../transformation/transf-rules2.html#rule:disjoint-classes-rc" class="xref page">Transformation rule: Disjoint classes from generalization sets</a>).</p>
 </div>
 </td>
 </tr>
@@ -334,7 +337,7 @@ Equivalent classes can be represented by using stereotypes on the uml:Generaliza
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" style="background-color:  #f5f8fc;"><p class="tableblock"><strong>Statement:</strong>
- Ends of the same side (either source or target) of two connectors connected with a generalization relation
+Ends of the same side (either source or target) of two connectors connected with a generalization relation
 must be attached to the same class or two different ones connected with a generalization relation.</p></td>
 </tr>
 </tbody>

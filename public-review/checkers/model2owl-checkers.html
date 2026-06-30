@@ -238,15 +238,15 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-connector-type-1</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">connector type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Only associations, dependecies, generalisations and realisation connectors are supported.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">check that the connector type is only associations, dependecies, generalisations and realisation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model2owl supports association, dependency, generalisation and realisation connectors. The following connector types were found in the model and are not transformed: $[list of connector types]. For guidance, see the documentation on unsupported UML constructs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that the connector type is only association, dependency, generalisation or realisation</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-element-type-2</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">element type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Only Class, Package, Datatype, Enumeration, and Object elements are supported</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">check that Class, Package, Datatype, Enumeration, and Object elements are used</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Model2owl supports Class, Package, Datatype, Enumeration, and Object elements. The following element types were found in the model and are not transformed: $[list of element types]. For guidance, see the documentation on unsupported UML constructs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check that only Class, Package, Datatype, Enumeration, and Object elements are used</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-prefix-3</code></p></td>
@@ -260,7 +260,7 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-center valign-top"><p class="tableblock">warning</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UML modifiers</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Model2owl does not transform UML attribute or generalisation-set modifiers. The following were found in the model and carry no meaning in the generated artefacts: $[list of modifiers]. For guidance, see the documentation on unsupported UML constructs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">check which of the modifiers {id}, {complete}, {disjoint} occur at least once in the model (presence only)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check which of the modifiers {id}, {complete} occur at least once in the model (presence only)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>general-construct-type-5</code></p></td>
@@ -1240,7 +1240,7 @@ We provide separate tables for each category of checkers. The columns in these t
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>generalisation-connector-unidirectional-connector-direction-8</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">error</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">direction of connectors associated with the generalisation connector doesn&#8217;t match</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The unidirectional connectors $connector1$ and $connector2$ associated with the generalisation connector have opposite directions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The connectors $connector1$ and $connector2$ associated with the generalisation connector have opposite directions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">for two associations $connector1$ and $connector2$ associated with the generalization connector:
 1) form a set of classes containing the sources and targets of both associations, and count the number of unique classes.
 2) if size of the set is 2, then check that the source of the first association is the same as the source of the second association</p></td>

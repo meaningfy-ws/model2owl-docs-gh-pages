@@ -409,6 +409,32 @@ If omitted, the file will be generated automatically.</p>
 </div>
 </li>
 <li>
+<p><code>owl-full</code> – Generates an <em>alternative, consolidated form</em> of the ontology: the OWL core and OWL restrictions artefacts merged into a single self-contained ontology (the two OWL artefacts consolidated for convenience, not a new artefact). It is optional and <strong>disabled by default</strong>; enable it with the <code>generateOWLFull</code> configuration parameter. When enabled it generates core and restrictions (if absent), merges them — keeping a single coherent ontology header and dropping the internal core/restrictions cross-import — and removes the standalone core/restrictions outputs so only the consolidated artefact remains (in <code>.owl</code>, <code>.rdf</code> and <code>.ttl</code>).</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>XMI_INPUT_FILE_PATH</code> – Path to the XMI file.</p>
+</li>
+<li>
+<p><code>OUTPUT_FOLDER_PATH</code> – Path to the output folder.</p>
+</li>
+<li>
+<p><code>NAMESPACES_USER_XML_FILE_PATH</code> – Path to the *.xml file containing namespaces.</p>
+</li>
+<li>
+<p><code>IMPORTS_XML_FILE_PATH</code> – Path to the *.xml file containing ontology URIs to be imported.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><code>shacl</code> – Generates SHACL data shapes suitable for validation.</p>
 <div class="ulist">
 <ul>
@@ -968,6 +994,17 @@ model2owl.</p>
 </div>
 </li>
 <li>
+<p><code>make owl-full</code> – Generates the optional consolidated form of the ontology (OWL core and OWL restrictions merged). Disabled by default; enable it with the <code>generateOWLFull</code> configuration parameter. See <a href="#sec:owl-full">the OWL-full consolidated form</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Generated Files (only when enabled; they replace the standalone core/restrictions files):
+<strong><code>&lt;input-file&gt;_full.owl</code></strong>, <strong><code>&lt;input-file&gt;_full.rdf</code></strong>, <strong><code>&lt;input-file&gt;_full.ttl</code></strong> – the consolidated ontology in OWL (OWL API flavour), RDF/XML and Turtle.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><code>make shacl</code> – Generates SHACL shapes for data validation.</p>
 <div class="ulist">
 <ul>
@@ -1088,6 +1125,39 @@ model2owl.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">make owl-core XMI_INPUT_FILE_PATH=/home/mypc/work/model2owl/file1.xml OUTPUT_FOLDER_PATH=./my-folder</code></pre>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sec:owl-full"><a class="anchor" href="#sec:owl-full"></a>The OWL-full consolidated form</h3>
+<div class="paragraph">
+<p>By default model2owl publishes the ontology as two complementary OWL artefacts: the
+lightweight <strong>OWL core</strong> (definitions) and the heavyweight <strong>OWL restrictions</strong> (axioms for
+reasoning, which imports core). Some consumers prefer a single, self-contained file. The
+optional <strong>OWL-full</strong> form provides exactly that: it is not a new artefact but an
+<strong>alternative form of the same ontology</strong>, with the two OWL artefacts consolidated for
+convenience.</p>
+</div>
+<div class="paragraph">
+<p>It is <strong>disabled by default</strong> and enabled with the <code>generateOWLFull</code> configuration
+parameter (see <a href="#sec:configuration">Configuration</a>). When enabled, <code>make owl-full</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>generates OWL core and OWL restrictions (if not already present), then merges them with
+<a href="https://robot.obolibrary.org/">ROBOT</a> into one ontology;</p>
+</li>
+<li>
+<p>keeps a single coherent ontology header (carrying the IRI configured in
+<code>fullArtefactURI</code>, by default the canonical base ontology URI) and drops the internal
+<code>owl:imports</code> from restrictions to core (the two layers are now consolidated), while
+keeping any external imports;</p>
+</li>
+<li>
+<p>removes the standalone core and restrictions outputs, so only the consolidated
+<code>&lt;input-file&gt;_full.owl</code> / <code>.rdf</code> / <code>.ttl</code> remain.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
